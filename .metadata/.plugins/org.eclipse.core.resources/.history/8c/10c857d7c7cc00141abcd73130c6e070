@@ -1,0 +1,71 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import javax.swing.JInternalFrame;
+import javax.swing.JLayeredPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JSplitPane;
+import javax.swing.JComboBox;
+
+
+public class JavaMDGui {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JavaMDGui window = new JavaMDGui();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public JavaMDGui() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JPanel panelLogin = new JPanel();
+		panelLogin.setBounds(-1240, -727, 450, 278);
+		frame.getContentPane().add(panelLogin);
+		
+		JPanel panelPatientMenu = new JPanel();
+		panelPatientMenu.setBounds(0, 0, 450, 278);
+		frame.getContentPane().add(panelPatientMenu);
+		panelPatientMenu.setLayout(null);
+		
+		JPanel panelPatientNewForm = new JPanel();
+		panelPatientNewForm.setBounds(0, 0, 450, 278);
+		panelPatientMenu.add(panelPatientNewForm);
+		panelPatientNewForm.setLayout(null);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(171, 40, 52, 27);
+		panelPatientNewForm.add(comboBox);
+		
+		JPanel panelPatientPendingForms = new JPanel();
+		panelPatientPendingForms.setBounds(308, 0, 142, 92);
+		panelPatientMenu.add(panelPatientPendingForms);
+	}
+}

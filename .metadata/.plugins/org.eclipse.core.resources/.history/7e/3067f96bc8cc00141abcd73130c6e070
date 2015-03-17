@@ -1,0 +1,83 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import javax.swing.JInternalFrame;
+import javax.swing.JLayeredPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JSplitPane;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JButton;
+
+
+public class JavaMDGui {
+
+	private JFrame frame;
+	private JTextField txtPassword;
+	private JTextField txtUsername;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JavaMDGui window = new JavaMDGui();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public JavaMDGui() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new CardLayout(0, 0));
+		
+		JPanel panelLogin = new JPanel();
+		frame.getContentPane().add(panelLogin, "name_31186421828104");
+		panelLogin.setLayout(null);
+		
+		JRadioButton rdbtnDoctor = new JRadioButton("Doctor");
+		rdbtnDoctor.setBounds(115, 72, 75, 23);
+		panelLogin.add(rdbtnDoctor);
+		
+		JRadioButton rdbtnPatient = new JRadioButton("Patient");
+		rdbtnPatient.setBounds(209, 72, 75, 23);
+		panelLogin.add(rdbtnPatient);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(270, 148, 117, 29);
+		panelLogin.add(btnLogin);
+		
+		txtPassword = new JTextField();
+		txtPassword.setText("Password");
+		txtPassword.setBounds(134, 147, 134, 28);
+		panelLogin.add(txtPassword);
+		txtPassword.setColumns(10);
+		
+		txtUsername = new JTextField();
+		txtUsername.setText("Username");
+		txtUsername.setBounds(134, 107, 134, 28);
+		panelLogin.add(txtUsername);
+		txtUsername.setColumns(10);
+	}
+}

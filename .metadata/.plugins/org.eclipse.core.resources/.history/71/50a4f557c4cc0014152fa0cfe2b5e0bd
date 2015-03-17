@@ -1,0 +1,97 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import java.awt.FlowLayout;
+import javax.swing.JToggleButton;
+import javax.swing.JComboBox;
+
+
+public class JavaMDGUI {
+
+	private JFrame frame;
+	private JTextField patientTextField;
+	private JTextField doctorTextField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JavaMDGUI window = new JavaMDGUI();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public JavaMDGUI() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new CardLayout(0, 0));
+		
+		JPanel panelLogin = new JPanel();
+		frame.getContentPane().add(panelLogin, "name_28419254197712");
+		panelLogin.setLayout(null);
+		
+		JButton btnLoginButton = new JButton("Login");
+		btnLoginButton.setBounds(232, 118, 117, 29);
+		panelLogin.add(btnLoginButton);
+		
+		patientTextField = new JTextField();
+		patientTextField.setBounds(99, 117, 134, 28);
+		panelLogin.add(patientTextField);
+		patientTextField.setColumns(10);
+		
+		doctorTextField = new JTextField();
+		doctorTextField.setBounds(99, 78, 134, 28);
+		panelLogin.add(doctorTextField);
+		doctorTextField.setColumns(10);
+		
+		JLabel lblUsername = new JLabel("UserName");
+		lblUsername.setBounds(23, 84, 84, 16);
+		panelLogin.add(lblUsername);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(23, 123, 61, 16);
+		panelLogin.add(lblPassword);
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Patient");
+		rdbtnNewRadioButton.setBounds(181, 43, 141, 23);
+		panelLogin.add(rdbtnNewRadioButton);
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Doctor");
+		rdbtnNewRadioButton_1.setBounds(99, 43, 141, 23);
+		panelLogin.add(rdbtnNewRadioButton_1);
+		
+		JPanel panelPatientMenu = new JPanel();
+		frame.getContentPane().add(panelPatientMenu, "name_28417052475320");
+		panelPatientMenu.setLayout(null);
+		
+		JPanel panelDoctorMenu = new JPanel();
+		frame.getContentPane().add(panelDoctorMenu, "name_28424755663211");
+		panelDoctorMenu.setLayout(null);
+	}
+}

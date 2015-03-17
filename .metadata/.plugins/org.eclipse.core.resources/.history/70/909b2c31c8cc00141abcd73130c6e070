@@ -1,0 +1,80 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import javax.swing.JInternalFrame;
+import javax.swing.JLayeredPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JSplitPane;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+
+
+public class JavaMDGui {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JavaMDGui window = new JavaMDGui();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public JavaMDGui() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JPanel panelLogin = new JPanel();
+		panelLogin.setBounds(-1240, -727, 450, 278);
+		frame.getContentPane().add(panelLogin);
+		panelLogin.setLayout(null);
+		
+		textField = new JTextField();
+		textField.setBounds(23, 5, 134, 28);
+		panelLogin.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(162, 5, 134, 28);
+		panelLogin.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setBounds(301, 11, 62, 16);
+		panelLogin.add(lblUsername);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(368, 11, 59, 16);
+		panelLogin.add(lblPassword);
+		
+		JLabel lblNewLabel = new JLabel("JAVAMD");
+		lblNewLabel.setBounds(199, 38, 51, 16);
+		panelLogin.add(lblNewLabel);
+	}
+}
