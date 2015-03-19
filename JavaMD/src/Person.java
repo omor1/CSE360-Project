@@ -1,4 +1,7 @@
 
+import java.time.LocalDate;
+import java.util.UUID;
+
 public class Person {
 	
 	public enum Gender {
@@ -8,11 +11,15 @@ public class Person {
 	}
 	
 	private Gender gender;
-	private int age;
+	private final LocalDate birthDate;
+	private String name;
+	private final UUID id;
 	
-	public Person(Gender gender, int age) {
-		this.gender = gender;
-		this.age = age;
+	public Person(Gender gender, LocalDate birthDate, String name, UUID id) {
+		this.setGender(gender);
+		this.birthDate = birthDate;
+		this.setName(name);
+		this.id = id;
 	}
 	
 	public Gender getGender() {
@@ -23,13 +30,20 @@ public class Person {
 		this.gender = gender;
 	}
 	
-	public int getAge() {
-		return age;
+	public LocalDate getBirthDate() {
+		return birthDate;
 	}
-	
-	public void setAge(int age) {
-		this.age = age;
+
+	public String getName() {
+		return name;
 	}
-	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public UUID getId() {
+		return id;
+	}
 
 }
