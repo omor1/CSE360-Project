@@ -1,38 +1,18 @@
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.UUID;
+import javax.mail.internet.InternetAddress;
 
 public class Person {
 	
-	public enum Gender {
-		MALE,
-		FEMALE,
-		OTHER
-	}
-	
-	private Gender gender;
-	private final LocalDate birthDate;
+
 	private String name;
 	private final UUID id;
+	private final InternetAddress email;
 	
-	public Person(Gender gender, LocalDate birthDate, String name, UUID id) {
-		this.setGender(gender);
-		this.birthDate = birthDate;
+	public Person(String name, UUID id, InternetAddress email) {
 		this.setName(name);
 		this.id = id;
-	}
-	
-	public Gender getGender() {
-		return gender;
-	}
-	
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
-	
-	public LocalDate getBirthDate() {
-		return birthDate;
+		this.email = email;
 	}
 	
 	public String getName() {
@@ -47,8 +27,8 @@ public class Person {
 		return id;
 	}
 	
-	public Period getAge() {
-		return Period.between(birthDate, LocalDate.now());
+	public InternetAddress getEmail() {
+		return email;
 	}
 
 }
