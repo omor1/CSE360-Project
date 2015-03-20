@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 public class DoctorHomePanel extends JPanel {
-	
+
 	//Instance variables used in this panel
 	private JLabel mainPA, welcomeLabel;
 	private JPanel top, bottom;
