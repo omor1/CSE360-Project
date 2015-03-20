@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.mail.internet.InternetAddress;
@@ -12,10 +14,48 @@ public class Patient extends Person {
 		OTHER
 	}
 	
+	public class MedicalInformation {
+		
+		public class Prescription {
+			private final String name;
+			private final double ammount;
+			
+			public Prescription(String name, double ammount) {
+				this.name = name;
+				this.ammount = ammount;
+			}
+			
+			public String getName() {
+				return name;
+			}
+			
+			public double getAmmount() {
+				return ammount;
+			}
+		}
+		
+		private final List<String> allergies;
+		private final List<Prescription> prescriptions;
+		
+		public MedicalInformation() {
+			this.allergies = new LinkedList<>();
+			this.prescriptions = new LinkedList<>();
+		}
+
+		public List<String> getAllergies() {
+			return allergies;
+		}
+
+		public List<Prescription> getPrescriptions() {
+			return prescriptions;
+		}
+	}
+	
 	private Gender gender;
 	private final LocalDate birthDate;
 	private double height;
 	private double weight;
+	private final MedicalInformation medicalInformation;
 	
 	public Patient(String name, UUID id, InternetAddress email, Gender gender, LocalDate birthDate, double height, double weight) {
 		super(name, id, email);
@@ -23,6 +63,7 @@ public class Patient extends Person {
 		this.birthDate = birthDate;
 		this.setWeight(weight);
 		this.setHeight(height);
+		this.medicalInformation = new MedicalInformation();
 	}
 	
 	public Gender getGender() {
@@ -51,6 +92,10 @@ public class Patient extends Person {
 
 	public void setWeight(double weight) {
 		this.weight = weight;
+	}
+
+	public MedicalInformation getMedicalInformation() {
+		return medicalInformation;
 	}
 
 	public Period getAge() {
