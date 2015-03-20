@@ -1,5 +1,6 @@
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.UUID;
 
 public class Person {
@@ -44,6 +45,10 @@ public class Person {
 
 	public UUID getId() {
 		return id;
+	}
+	
+	public Period getAge() {
+		return Period.between(birthDate, LocalDate.now());
 	}
 
 }
