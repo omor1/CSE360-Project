@@ -4,7 +4,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+# *.jar # We use the JavaMail library, javax.mail.jar
 *.war
 *.ear
 
