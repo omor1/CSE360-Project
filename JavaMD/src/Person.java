@@ -34,15 +34,15 @@ public class Person {
 	public LocalDate getBirthDate() {
 		return birthDate;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public UUID getId() {
 		return id;
 	}
