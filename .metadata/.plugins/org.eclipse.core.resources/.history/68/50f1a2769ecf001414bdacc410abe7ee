@@ -1,0 +1,77 @@
+import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class MDGui {
+
+	private static JFrame frame;
+	private JPanel panel;
+	private int state = 0;
+	/*
+	private Connection conn = null;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	
+	private void formWindowOpened(java.awt.event.WindowEvent event){
+		conn = MySQLConnect.ConnectDb();
+	}
+	*/
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MDGui window = new MDGui();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public MDGui() {
+		initializeLogin();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initializeLogin() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(new Login_Panel());
+	}
+	
+	public static void intializePatient(){
+		frame.add(new Patient_Panel());
+	}
+	
+	public static void intializeDoctor(){
+		frame.add(new DoctorHomePanel());
+	}
+	
+	public static void intializePatientCreateForm(){
+		frame.add(new CreateForm_Panel());
+	}
+	
+	public static void intializeDoctorSetThreshold(){
+		frame.add(new SetThreshold_Panel());
+	}
+	
+
+	public static void intializeExistingForm() {
+		frame.add(new ExistingForm_Panel());
+	}
+}

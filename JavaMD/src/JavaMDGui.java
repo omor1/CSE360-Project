@@ -106,10 +106,6 @@ public class JavaMDGui {
 		btnLogin.setBounds(270, 148, 117, 29);
 		panelLogin.add(btnLogin);
 		
-		
-		JPanel panelPatientCreateForm = new JPanel();
-		frmJavamd.getContentPane().add(panelPatientCreateForm, "name_31828079017857");
-		panelPatientCreateForm.setLayout(new GridLayout(1, 0, 0, 0));
 	}
 	
 	private void intializePatientMenu(){
@@ -121,7 +117,8 @@ public class JavaMDGui {
 		JButton btnCreateForm = new JButton("Create Form");
 		btnCreateForm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				panelPatientMenu.setVisible(false);
+				intializePatientCreateForm();
 			}
 		});
 		btnCreateForm.setBounds(28, 63, 117, 29);
@@ -142,4 +139,47 @@ public class JavaMDGui {
 		
 		panelPatientMenu.setVisible(true);
 	}
+
+	private void intializePatientCreateForm(){
+		JPanel panelPatientCreateForm = new JPanel();
+		frmJavamd.getContentPane().add(panelPatientCreateForm, "name_31828079017857");
+		panelPatientCreateForm.setLayout(null);
+		
+		String[] scaleOfPain = {"0","1","2","3","4","5","6","7","8","9","10"};
+	
+		JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnReset.setBounds(72, 183, 117, 29);
+		panelPatientCreateForm.add(btnReset);
+	
+		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSubmit.setBounds(227, 183, 117, 29);
+		panelPatientCreateForm.add(btnSubmit);
+	
+		JLabel lblSymtom = new JLabel("Symtom 1");
+		lblSymtom.setBounds(57, 31, 76, 16);
+		panelPatientCreateForm.add(lblSymtom);
+	
+		JLabel lblSymtom_1 = new JLabel("Symtom 2");
+		lblSymtom_1.setBounds(57, 70, 96, 16);
+		panelPatientCreateForm.add(lblSymtom_1);
+	
+		JComboBox comboBox = new JComboBox(scaleOfPain);
+		comboBox.setBounds(145, 27, 70, 27);
+		panelPatientCreateForm.add(comboBox);
+	
+		JComboBox comboBox_1 = new JComboBox(scaleOfPain);
+		comboBox_1.setBounds(145, 66, 70, 27);
+		panelPatientCreateForm.add(comboBox_1);
+		
+		panelPatientCreateForm.setVisible(true);
+	}
 }
+

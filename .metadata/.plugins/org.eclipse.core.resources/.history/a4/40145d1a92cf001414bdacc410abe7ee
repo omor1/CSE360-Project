@@ -1,0 +1,13 @@
+import javax.swing.JPanel;
+
+
+public class SetThreshold_Panel extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public SetThreshold_Panel() {
+
+	}
+
+}

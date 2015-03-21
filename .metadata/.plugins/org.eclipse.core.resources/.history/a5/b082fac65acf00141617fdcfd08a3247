@@ -1,0 +1,70 @@
+import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class MDGui {
+
+	private JFrame frame;
+	private JPanel panel;
+	private int state = 0;
+	/*
+	private Connection conn = null;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	
+	private void formWindowOpened(java.awt.event.WindowEvent event){
+		conn = MySQLConnect.ConnectDb();
+	}
+	*/
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MDGui window = new MDGui();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public MDGui() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(getState(state));
+		int previousState = state;
+		while(state!=3){
+			if(previousState != state){
+				frame.add(getState(state));
+			}
+		}
+	}
+	private JPanel getState(int x){
+		switch(x){
+			case 0:
+				return new Login_Panel();
+			
+		}
+		
+	}
+}

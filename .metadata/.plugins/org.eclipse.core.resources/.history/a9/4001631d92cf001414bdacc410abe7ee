@@ -1,0 +1,16 @@
+import java.awt.BorderLayout;
+import java.awt.Choice;
+
+import javax.swing.JPanel;
+
+
+public class SetThreshold_Panel extends JPanel {
+	private JPanel threshold;
+	/**
+	 * Create the panel.
+	 */
+	public SetThreshold_Panel() {
+		setLayout(null);
+	}
+
+}
