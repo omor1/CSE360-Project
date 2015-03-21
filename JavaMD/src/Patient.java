@@ -7,36 +7,34 @@ import java.util.UUID;
 import javax.mail.internet.InternetAddress;
 
 public class Patient extends Person {
-	
+
 	public enum Gender {
-		MALE,
-		FEMALE,
-		OTHER
+		MALE, FEMALE, OTHER
 	}
-	
+
 	public class MedicalInformation {
-		
+
 		public class Prescription {
 			private final String name;
 			private final double ammount;
-			
+
 			public Prescription(String name, double ammount) {
 				this.name = name;
 				this.ammount = ammount;
 			}
-			
+
 			public String getName() {
 				return name;
 			}
-			
+
 			public double getAmmount() {
 				return ammount;
 			}
 		}
-		
+
 		private final List<String> allergies;
 		private final List<Prescription> prescriptions;
-		
+
 		public MedicalInformation() {
 			this.allergies = new LinkedList<>();
 			this.prescriptions = new LinkedList<>();
@@ -50,22 +48,26 @@ public class Patient extends Person {
 			return prescriptions;
 		}
 	}
-	
+
 	private Gender gender;
 	private final LocalDate birthDate;
 	private double height;
 	private double weight;
 	private final MedicalInformation medicalInformation;
-	
-	public Patient(String name, UUID id, InternetAddress email, Gender gender, LocalDate birthDate, double height, double weight) {
+	private final List<Form> forms;
+
+	public Patient(String name, UUID id, InternetAddress email, Gender gender,
+			LocalDate birthDate, double height, double weight,
+			MedicalInformation medicalInformation, List<Form> forms) {
 		super(name, id, email);
 		this.setGender(gender);
 		this.birthDate = birthDate;
 		this.setWeight(weight);
 		this.setHeight(height);
-		this.medicalInformation = new MedicalInformation();
+		this.medicalInformation = medicalInformation;
+		this.forms = forms;
 	}
-	
+
 	public Gender getGender() {
 		return gender;
 	}
@@ -96,6 +98,10 @@ public class Patient extends Person {
 
 	public MedicalInformation getMedicalInformation() {
 		return medicalInformation;
+	}
+
+	public List<Form> getForms() {
+		return forms;
 	}
 
 	public Period getAge() {
