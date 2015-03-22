@@ -91,8 +91,7 @@ public class CreateForm_Panel extends JPanel {
 					JOptionPane.showMessageDialog(null, "Did not fill out form correctly\nPlease double" 
 							+ " check your answers and resubmit");
 				}else{
-					JOptionPane.showMessageDialog(null, "Form submited correctly!\n"
-							+ "Priority Level: " + comboToInt() );
+					JOptionPane.showMessageDialog(null, "Form submited correctly!");
 					// create form here
 					//f1 = new Form(comboBox1.getSelectedItem().toString(), comboBox1.getSelectedItem().toString(),comboBox1.getSelectedItem().toString(),comboBox1.getSelectedItem().toString(),comboBox1.getSelectedItem().toString());
 					

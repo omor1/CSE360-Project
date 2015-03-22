@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
 
 
 public class CreateForm_Panel extends JPanel {
-	private Form f1;
+
 	/**
 	 * Create the panel.
 	 */
@@ -91,23 +91,10 @@ public class CreateForm_Panel extends JPanel {
 					JOptionPane.showMessageDialog(null, "Did not fill out form correctly\nPlease double" 
 							+ " check your answers and resubmit");
 				}else{
-					JOptionPane.showMessageDialog(null, "Form submited correctly!\n"
-							+ "Priority Level: " + comboToInt() );
-					// create form here
-					//f1 = new Form(comboBox1.getSelectedItem().toString(), comboBox1.getSelectedItem().toString(),comboBox1.getSelectedItem().toString(),comboBox1.getSelectedItem().toString(),comboBox1.getSelectedItem().toString());
-					
+					JOptionPane.showMessageDialog(null, "Form submited correctly!");
 					setVisible(false);
 					MDGui.intializePatient();
 				}
-			}
-			private int comboToInt(){
-				int sum = 0;
-				sum += Integer.parseInt(comboBox1.getSelectedItem().toString());
-				sum += Integer.parseInt(comboBox2.getSelectedItem().toString());
-				sum += Integer.parseInt(comboBox3.getSelectedItem().toString());
-				sum += Integer.parseInt(comboBox4.getSelectedItem().toString());
-				sum += Integer.parseInt(comboBox5.getSelectedItem().toString());
-				return sum;
 			}
 			private boolean filledOut(){
 				if(comboBox1.getSelectedItem() == null || comboBox2.getSelectedItem() == null
