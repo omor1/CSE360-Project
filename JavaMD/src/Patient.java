@@ -58,8 +58,9 @@ public class Patient extends Person {
 
 	public Patient(String name, UUID id, InternetAddress email, Gender gender,
 			LocalDate birthDate, double height, double weight,
-			MedicalInformation medicalInformation, List<Form> forms) {
-		super(name, id, email);
+			MedicalInformation medicalInformation, List<Form> forms,
+			String password) {
+		super(name, id, email, password);
 		this.setGender(gender);
 		this.birthDate = birthDate;
 		this.setWeight(weight);
