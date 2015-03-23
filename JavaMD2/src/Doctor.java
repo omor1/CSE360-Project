@@ -6,8 +6,8 @@ public class Doctor extends Person {
 
 	private int threshold;
 
-	public Doctor(String name, UUID id, InternetAddress email) {
-		super(name, id, email);
+	public Doctor(String name, UUID id, InternetAddress email, String password) {
+		super(name, id, email, password);
 		this.setThreshold(0);
 	}
 

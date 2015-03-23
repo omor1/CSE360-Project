@@ -16,19 +16,19 @@ public class Patient extends Person {
 
 		public class Prescription {
 			private final String name;
-			private final double ammount;
+			private final double amount;
 
-			public Prescription(String name, double ammount) {
+			public Prescription(String name, double amount) {
 				this.name = name;
-				this.ammount = ammount;
+				this.amount = amount;
 			}
 
 			public String getName() {
 				return name;
 			}
 
-			public double getAmmount() {
-				return ammount;
+			public double getAmount() {
+				return amount;
 			}
 		}
 
@@ -58,8 +58,9 @@ public class Patient extends Person {
 
 	public Patient(String name, UUID id, InternetAddress email, Gender gender,
 			LocalDate birthDate, double height, double weight,
-			MedicalInformation medicalInformation, List<Form> forms) {
-		super(name, id, email);
+			MedicalInformation medicalInformation, List<Form> forms,
+			String password) {
+		super(name, id, email, password);
 		this.setGender(gender);
 		this.birthDate = birthDate;
 		this.setWeight(weight);
