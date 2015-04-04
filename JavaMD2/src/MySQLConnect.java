@@ -6,6 +6,7 @@ public class MySQLConnect {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://Localhost/student","root","root");
+			System.out.println("Connection work!");
 			return conn;
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null,e);
