@@ -6,21 +6,19 @@ import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
 public class MDGui {
 
 	private static JFrame frame;
 	private JPanel panel;
 	private int state = 0;
+
 	/*
-	private Connection conn = null;
-	PreparedStatement pst = null;
-	ResultSet rs = null;
-	
-	private void formWindowOpened(java.awt.event.WindowEvent event){
-		conn = MySQLConnect.ConnectDb();
-	}
-	*/
+	 * private Connection conn = null; PreparedStatement pst = null; ResultSet
+	 * rs = null;
+	 * 
+	 * private void formWindowOpened(java.awt.event.WindowEvent event){ conn =
+	 * MySQLConnect.ConnectDb(); }
+	 */
 	/**
 	 * Launch the application.
 	 */
@@ -53,23 +51,22 @@ public class MDGui {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new Login_Panel());
 	}
-	
-	public static void intializePatient(){
+
+	public static void intializePatient() {
 		frame.add(new Patient_Panel());
 	}
-	
-	public static void intializeDoctor(){
+
+	public static void intializeDoctor() {
 		frame.add(new Doctor_Panel());
 	}
-	
-	public static void intializePatientCreateForm(){
+
+	public static void intializePatientCreateForm() {
 		frame.add(new CreateForm_Panel());
 	}
-	
-	public static void intializeDoctorSetThreshold(){
+
+	public static void intializeDoctorSetThreshold() {
 		frame.add(new SetThreshold_Panel());
 	}
-	
 
 	public static void intializeExistingFormPatient() {
 		frame.add(new ExistingFormPatient_Panel());
@@ -77,11 +74,11 @@ public class MDGui {
 
 	public static void intializeDoctorDiagonse() {
 		frame.add(new Diagnose_Panel());
-		
+
 	}
 
 	public static void intializeExistingFormDoctor() {
 		frame.add(new ExistingFormDoctor_Panel());
-		
+
 	}
 }
