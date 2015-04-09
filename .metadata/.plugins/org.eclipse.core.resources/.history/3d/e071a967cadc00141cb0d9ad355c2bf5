@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
@@ -21,7 +22,7 @@ public class Database {
 	private final String dbName = "test";
 	
 	/** The name of the table we are testing with */
-	private String tableName = "JDBC_TEST";
+	private String tableName = "?";
 
 	/** The name of the Connection **/
 	private Connection conn = null;
@@ -122,20 +123,22 @@ public class Database {
 	 * Retrieves Passward and other data
 	 * 
 	 */
-	/*
-	public void retrieveData(String newEmail){
-			try {
-				String retrieveString = "SELECT * FROM " + this.tableName + " WHERE EMAIL = '" + newEmail
-				+ "';";
-				System.out.println(retrieveString);
-				
-				this.executeUpdate(conn, retrieveString);
-				
-			}catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	public void retrieveData(){
+		try{
+			Statement st = conn.createStatement();
+			String sql = ("SELECT * FROM test.Patients");
+			ResultSet rs = st.executeQuery(sql);
+			if(rs.next()) { 
+ 				int id = rs.getInt("ID"); 
+ 				String name1 = rs.getString("NAME");
+ 				String email1 = rs.getString("EMAIL");
+ 				String password1 = rs.getString("PASSWORD");
+ 				System.out.println(id +" "+ name1 +  " " + email1 + " " + password1);
+ 	
 			}
+		}catch(SQLException e){
+			e.printStackTrace();
 		}
 }
-*/
+
 }

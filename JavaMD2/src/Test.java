@@ -13,6 +13,7 @@ public class Test {
 			db.createTable("Patients");
 			db.insertData("Adam", "afranc15@gmail.com", "1234");
 			db.insertData("Whoever", "whoever@yahoo.com", "5678");
+			db.retrieveData("Patients", "afranc15@gmail.com");
 		}catch(Exception e){
 			
 		}
