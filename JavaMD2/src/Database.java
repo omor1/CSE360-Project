@@ -4,6 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+import java.util.UUID;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
 public class Database {
 	/** The name of the MySQL account to use (or empty for anonymous) */
@@ -148,5 +152,22 @@ public class Database {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public Person retrievePerson(String name, String password) throws SQLException, AddressException {
+		String retrieveString = "SELECT * FROM test . Patients"
+				+ " WHERE name = '" + name + "' AND password = '" + password + "';";
+		System.out.println(retrieveString);
+
+		Statement st = conn.createStatement();
+		ResultSet rs = st.executeQuery(retrieveString);
+		if (rs.next()) {
+			UUID id = UUID.fromString(rs.getString("ID"));
+			InternetAddress email = new InternetAddress(rs.getString("EMAIL"));
+			return new Person(name, id, email, password);
+		} else {
+			return null;
+		}
+
 	}
 }
