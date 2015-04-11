@@ -1,3 +1,4 @@
+import javax.mail.internet.AddressException;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
@@ -13,9 +14,12 @@ import javax.swing.JRadioButtonMenuItem;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JRadioButton;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 
 public class Login_Panel extends JPanel {
@@ -90,17 +94,20 @@ public class Login_Panel extends JPanel {
 		JButton btnEnter = new JButton("Enter");
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(txtUsername.getText().equals("user") && pwdPassword.getText().equals("1234")){
-					setVisible(false);
-					if(rdbtnPatient.isSelected() == true){
-						MDGui.intializePatient();
-					}else{
-						MDGui.intializeDoctor();
+				Person temp;
+				try {
+					temp = MDGui.db.retrievePerson(txtUsername.getText(), pwdPassword.getText());
+					if(temp == null){
+						JOptionPane.showMessageDialog(null, "Invalid Username or Password\nPlease try again");
 					}
-					
-				}else{
-					JOptionPane.showMessageDialog(null, "Invalid Username or Password\nPlease try again");
+				} catch (AddressException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
+				
 			}
 		});
 		btnEnter.setBounds(293, 143, 117, 29);

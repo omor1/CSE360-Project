@@ -11,7 +11,8 @@ public class MDGui {
 	private static JFrame frame;
 	private JPanel panel;
 	private int state = 0;
-
+	public static Database db;
+	public Person user;
 	/*
 	 * private Connection conn = null; PreparedStatement pst = null; ResultSet
 	 * rs = null;
@@ -26,6 +27,10 @@ public class MDGui {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					db = new Database();
+					if(db.getConnection()){
+						System.out.println("Database is connected");
+					}
 					MDGui window = new MDGui();
 					window.frame.setVisible(true);
 				} catch (Exception e) {

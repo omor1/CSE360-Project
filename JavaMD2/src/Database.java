@@ -95,7 +95,9 @@ public class Database {
 
 	}
 
-	public boolean deleteTable(String newTableName) {
+
+	public boolean deleteTable(String newTableName) throws SQLException {
+
 		tableName = newTableName;
 		try {
 			String dropString = "DROP TABLE " + this.tableName;
@@ -113,8 +115,8 @@ public class Database {
 	 * INSERT INTO `test`.`Patients` (`NAME`, `EMAIL`, `PASSWORD`) VALUES
 	 * ('Hey', 'dsds', 'dsds');
 	 */
-	public void insertData(String newName, String newEmail, String newPassword) {
-		try {
+	public void insertData(String newName, String newEmail, String newPassword) throws SQLException {
+		
 			this.tableName = "Patients";
 			String inputString = "INSERT INTO " + this.dbName + " . "
 					+ this.tableName + " (`NAME`, `EMAIL`, `PASSWORD`) "
@@ -123,36 +125,13 @@ public class Database {
 			System.out.println(inputString);
 
 			this.executeUpdate(conn, inputString);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 
 	}
 
 	/*
 	 * Retrieves Passward and other data
 	 */
-
-	public void retrieveData(String newTableName, String newEmail) {
-		try {
-			String retrieveString = "SELECT * FROM test . " + newTableName
-					+ " WHERE email = '" + newEmail + "';";
-			System.out.println(retrieveString);
-
-			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery(retrieveString);
-			if (rs.next()) {
-				int id = rs.getInt("ID");
-				String str1 = rs.getString("NAME");
-				System.out.println(id + " " + str1);
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	public Person retrievePerson(String name, String password) throws SQLException, AddressException {
 		String retrieveString = "SELECT * FROM test . Patients"
@@ -162,9 +141,16 @@ public class Database {
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(retrieveString);
 		if (rs.next()) {
-			UUID id = UUID.fromString(rs.getString("ID"));
+			System.out.println("Creating Person to return");
+			/* Getting error:
+			 * java.lang.IllegalArgumentException: Invalid UUID string: 1
+			 */
+			//UUID id = UUID.fromString(rs.getString("ID"));
+			int id = rs.getInt("ID");
 			InternetAddress email = new InternetAddress(rs.getString("EMAIL"));
-			return new Person(name, id, email, password);
+			Person temp = new Person(name, id, email, password);
+			System.out.println(temp.toString());
+			return temp;
 		} else {
 			return null;
 		}
