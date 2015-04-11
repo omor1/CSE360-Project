@@ -12,9 +12,14 @@ public class Test {
 			db.createTable("Patients");
 			db.insertData("Adam", "afranc15@gmail.com", "1234");
 			db.insertData("Whoever", "whoever@yahoo.com", "5678");
-			db.retrieveData("Patients", "afranc15@gmail.com");
+			Person temp = db.retrievePerson("Adam", "1234");
+			if(temp == null){
+				System.out.println("Did not work.");
+			}else{
+				System.out.println(temp.toString());
+			}
 		} catch (Exception e) {
-
+			System.out.println(e);
 		}
 	}
 
