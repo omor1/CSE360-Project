@@ -86,4 +86,7 @@ public class MDGui {
 		frame.add(new ExistingFormDoctor_Panel());
 
 	}
+	public static void initializeResetPassword(){
+		frame.add(new ResetPassword_Panel());
+	}
 }
