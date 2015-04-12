@@ -5,14 +5,14 @@ import javax.mail.internet.InternetAddress;
 public class Person {
 
 	private String name;
-	private final int id;
+	private final UUID id; 
 	private final InternetAddress email;
 	
 	private final String password; // THIS WILL CHANGE
 
-	public Person(String name, int id, InternetAddress email, String password) {
+	public Person(String name, UUID id2, InternetAddress email, String password) {
 		this.setName(name);
-		this.id = id;
+		this.id = id2;
 		this.email = email;
 		this.password = password;
 	}
@@ -25,7 +25,7 @@ public class Person {
 		this.name = name;
 	}
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
 

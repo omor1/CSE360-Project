@@ -130,7 +130,7 @@ public class Database {
 	}
 
 	/*
-	 * Retrieves Passward and other data
+	 * Retrieves Password and other data
 	 */
 	
 	public Person retrievePerson(String name, String password) throws SQLException, AddressException {
@@ -145,8 +145,7 @@ public class Database {
 			/* Getting error:
 			 * java.lang.IllegalArgumentException: Invalid UUID string: 1
 			 */
-			//UUID id = UUID.fromString(rs.getString("ID"));
-			int id = rs.getInt("ID");
+			UUID id = UUID.fromString(rs.getString("ID"));
 			InternetAddress email = new InternetAddress(rs.getString("EMAIL"));
 			Person temp = new Person(name, id, email, password);
 			System.out.println(temp.toString());

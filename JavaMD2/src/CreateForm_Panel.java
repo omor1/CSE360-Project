@@ -27,24 +27,24 @@ public class CreateForm_Panel extends JPanel {
 		lblCreateForm.setBounds(153, 0, 170, 32);
 		add(lblCreateForm);
 		
-		JLabel lblS = new JLabel("S1");
+		JLabel lblS = new JLabel("Nausea:");
 		lblS.setBounds(20, 50, 61, 16);
 		add(lblS);
 		
-		JLabel lblS_1 = new JLabel("S2");
+		JLabel lblS_1 = new JLabel("Pain:");
 		lblS_1.setBounds(258, 50, 23, 16);
 		add(lblS_1);
 		
-		JLabel lblS_2 = new JLabel("S3");
+		JLabel lblS_2 = new JLabel("Fatigue:");
 		lblS_2.setBounds(20, 98, 61, 16);
 		add(lblS_2);
 		
-		JLabel lblS_3 = new JLabel("S4");
-		lblS_3.setBounds(258, 98, 23, 16);
+		JLabel lblS_3 = new JLabel("Anxiety:");
+		lblS_3.setBounds(258, 98, 44, 16);
 		add(lblS_3);
 		
-		JLabel lblS_4 = new JLabel("S5");
-		lblS_4.setBounds(20, 140, 61, 16);
+		JLabel lblS_4 = new JLabel("Shortness of breath:");
+		lblS_4.setBounds(20, 140, 103, 16);
 		add(lblS_4);
 		
 		JLabel lblAdditionalComments = new JLabel("Additional Comments:");
@@ -77,7 +77,7 @@ public class CreateForm_Panel extends JPanel {
 		add(comboBox3);
 		
 		JComboBox comboBox4 = new JComboBox(scaleOfPain);
-		comboBox4.setBounds(327, 94, 120, 32);
+		comboBox4.setBounds(327, 90, 120, 32);
 		add(comboBox4);
 		
 		JComboBox comboBox5 = new JComboBox(scaleOfPain);
@@ -100,14 +100,16 @@ public class CreateForm_Panel extends JPanel {
 					MDGui.intializePatient();
 				}
 			}
+			//this is our threshold calculator. Determines priority level of form. 
 			private int comboToInt(){
 				int sum = 0;
 				sum += Integer.parseInt(comboBox1.getSelectedItem().toString());
 				sum += Integer.parseInt(comboBox2.getSelectedItem().toString());
 				sum += Integer.parseInt(comboBox3.getSelectedItem().toString());
 				sum += Integer.parseInt(comboBox4.getSelectedItem().toString());
-				sum += Integer.parseInt(comboBox5.getSelectedItem().toString());
-				return sum;
+				sum += Integer.parseInt(comboBox5.getSelectedItem().toString());				
+				int fsum = sum/5; 
+				return fsum;
 			}
 			private boolean filledOut(){
 				if(comboBox1.getSelectedItem() == null || comboBox2.getSelectedItem() == null
@@ -121,7 +123,16 @@ public class CreateForm_Panel extends JPanel {
 		});
 		btnSubmit.setBounds(302, 253, 117, 29);
 		add(btnSubmit);
+		
+		JButton btnHomepage = new JButton("Homepage");
+		btnHomepage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				MDGui.intializePatient();
+			}
+		});
+		btnHomepage.setBounds(302, 216, 117, 32);
+		add(btnHomepage);
 	
 	}
-	
 }
