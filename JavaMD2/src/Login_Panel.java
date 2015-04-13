@@ -96,11 +96,15 @@ public class Login_Panel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Person temp;
 				try {
-					temp = MDGui.db.retrievePerson(txtUsername.getText(), pwdPassword.getText());
+					temp = MDGui.db.retrievePatient(txtUsername.getText(), pwdPassword.getText());
+					if(rdbtnDoctor.isSelected() == true){
+						temp = MDGui.db.retrieveDoctor(txtUsername.getText(), pwdPassword.getText());
+					}																
 					if(temp == null){
 						JOptionPane.showMessageDialog(null, "Invalid Username or Password\nPlease try again");
+					}	
 					}
-				} catch (AddressException e1) {
+				 catch (AddressException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (SQLException e1) {
@@ -110,7 +114,7 @@ public class Login_Panel extends JPanel {
 				
 			}
 		});
-		btnEnter.setBounds(193, 143, 134, 29);
+		btnEnter.setBounds(301, 124, 134, 29);
 		add(btnEnter);
 		
 		// Reset password button
@@ -118,10 +122,20 @@ public class Login_Panel extends JPanel {
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				MDGui.initializePassResetForm();
+				MDGui.initializeResetPassword();
 			}
 		});
-		btnReset.setBounds(193, 157, 134, 29);
+		btnReset.setBounds(74, 195, 134, 29);
 		add(btnReset);
+		
+		JButton btnRegister = new JButton("Register Here");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				MDGui.initializeRegisterPatient();
+			}
+		});
+		btnRegister.setBounds(215, 195, 134, 28);
+		add(btnRegister);
 	}
 }
