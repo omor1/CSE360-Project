@@ -287,13 +287,24 @@ public class Database {
 
 	}
 
-	public boolean searchEmail(String email) throws SQLException{
+	public Person searchEmail(String email) throws SQLException{
 		String str = "SELECT * FROM test . Patients WHERE email = '" + email + "';";
 		System.out.println(str);
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(str);
 		if(rs.next()){
-			return true;
+			int id = rs.getInt("ID");
+			String name = rs.getString("NAME");
+			String pw = rs.getString("PASSWORD");
+			InternetAddress e = null;
+			try {
+				e = new InternetAddress(email);
+			} catch (AddressException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Person temp = new Person(name, id, e, pw);
+			return temp;
 		}else{
 				
 			System.out.println("Not in Patients table");
@@ -302,9 +313,21 @@ public class Database {
 			Statement st2 = conn.createStatement();
 			ResultSet rs2 = st2.executeQuery(str2);
 			if(rs2.next()){
-				return true;
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");				
+				int threshold = rs.getInt("Threshold");
+				String pw = rs.getString("PASSWORD");
+				InternetAddress e = null;
+				try {
+					e = new InternetAddress(email);
+				} catch (AddressException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				Person temp = new Doctor(name, id, e, pw, threshold);
+				return temp;
 			}else{
-				return false;
+				return null;
 			}
 		}
 	}

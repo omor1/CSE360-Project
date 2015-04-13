@@ -61,7 +61,11 @@ public class ResetPassword_Panel extends JPanel{
 	private boolean PatientExists(String Email){
 		// this will look in DB to see a patient exists with specified email
 		try {
-			return MDGui.db.searchEmail(Email);
+			Person temp = MDGui.db.searchEmail(Email);
+			if (temp != null)
+			{
+				return true;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,10 +125,18 @@ public class ResetPassword_Panel extends JPanel{
 		// Generate new password
 		String sNewPassword;
 		final SecureRandom random = new SecureRandom();
-		sNewPassword = new BigInteger(60,random).toString(32);
-		
+		sNewPassword = new BigInteger(60,random).toString(32);		
 		try{
-			// Code goes here to change patient's password to new password
+			Person temp = MDGui.db.searchEmail(email);
+			if(temp != null)
+			{				
+				temp.setPassword(sNewPassword);
+				MDGui.db.updatePerson(temp);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Email not in database");
+			}
 		}catch(Exception ex){
 			sNewPassword = ex.toString();
 		}
