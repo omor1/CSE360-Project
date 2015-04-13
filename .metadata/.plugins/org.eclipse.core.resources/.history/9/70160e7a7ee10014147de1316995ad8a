@@ -1,0 +1,257 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Properties;
+import java.util.UUID;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
+public class Database {
+	/** The name of the MySQL account to use (or empty for anonymous) */
+	private final String userName = "root";
+
+	/** The password for the MySQL account (or empty for anonymous) */
+	private final String password = "root";
+
+	/** The name of the computer running MySQL */
+	private final String serverName = "localhost";
+
+	/** The port of the MySQL server (default is 3306) */
+	private final int portNumber = 3306;
+
+	/**
+	 * The name of the database we are testing with (this default is installed
+	 * with MySQL)
+	 */
+	private final String dbName = "test";
+
+	/** The name of the table we are testing with */
+	private String tableName = "JDBC_TEST";
+
+	/** The name of the Connection **/
+	private Connection conn = null;
+
+	/**
+	 * Get a new database connection
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean getConnection() throws SQLException {
+		Properties connectionProps = new Properties();
+		connectionProps.put("user", this.userName);
+		connectionProps.put("password", this.password);
+
+		conn = DriverManager.getConnection("jdbc:mysql://" + this.serverName
+				+ ":" + this.portNumber + "/" + this.dbName, connectionProps);
+
+		return true;
+	}
+
+	/**
+	 * Run a SQL command which does not return a recordset:
+	 * CREATE/INSERT/UPDATE/DELETE/DROP/etc.
+	 * 
+	 * @throws SQLException
+	 *             If something goes wrong
+	 */
+	public boolean executeUpdate(Connection conn, String command)
+			throws SQLException {
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			stmt.executeUpdate(command); // This will throw a SQLException if it
+											// fails
+			return true;
+		} finally {
+
+			// This will run whether we throw an exception or not
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+	}
+
+	public boolean createTable(String newTableName) {
+		tableName = newTableName;
+
+		try {
+			String createString = "CREATE TABLE " + this.tableName + " ( "
+					+ "ID INT NOT NULL AUTO_INCREMENT, "
+					+ "NAME varchar(40) NOT NULL, "
+					+ "EMAIL varchar(100) NOT NULL, "
+					+ "PASSWORD varchar(100) NOT NULL," + "PRIMARY KEY (ID))";
+			this.executeUpdate(conn, createString);
+			System.out.println("Created a table");
+			return true;
+		} catch (SQLException e) {
+			System.out.println("ERROR: Could not create the table");
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+
+
+	public boolean deleteTable(String newTableName) throws SQLException {
+
+		tableName = newTableName;
+		try {
+			String dropString = "DROP TABLE " + this.tableName;
+			this.executeUpdate(conn, dropString);
+			System.out.println("Dropped the table");
+			return true;
+		} catch (SQLException e) {
+			System.out.println("ERROR: Could not drop the table");
+			e.printStackTrace();
+			return false;
+		}
+	}
+	/*
+	 * Create form in Database
+	 * 
+	 * INSERT INTO `test`.`Forms` (`Patient`, `Doctor`, `Priority`, `Comments`, `Nausea`, `Pain`, `Fatigue`, `Anxiety`, `ShortnessOfBreath`) 
+	 * VALUES ('a', 's', '4', 'd', '1', '3', '3', '3', '3');
+
+	 */
+	
+	public void createForm(Form f1) throws SQLException {
+		// TODO Auto-generated method stub
+		this.tableName = "Forms";
+		String createForm = "INSERT INTO " + this.dbName + " . "
+				+ this.tableName + " (`Patient`, `Priority`, `Comments`, `Nausea`, `Pain`, `Fatigue`, `Anxiety`, `ShortnessOfBreath`, `Status`) " 
+				+ "VALUES ('" + f1.getPatient() + "', '" + f1.getPriority() + "', '" +  f1.getComments() + "', '" + f1.getPain()
+				+ "', '" + f1.getPain() + "', '" + f1.getFatigue() + "', '" + f1.getAnxiety() + "', '" +f1.getShortnessOfBreath() + "', '" 
+				+ f1.getStatus() + "');";
+		System.out.println(createForm);
+		this.executeUpdate(conn, createForm);
+	}
+	/*
+	 * Update form with diagnose and doctor
+	 * UPDATE `test`.`Forms` SET `Doctor`='Anybody', `Diagnose`='I sent a prescibtion to the pharmacy' WHERE `idForms`='5';
+	 */
+	
+	public void updateForm(Form f1) throws SQLException{
+		this.tableName = "Forms";
+		String updateString = "UPDATE " + this.dbName + " . "
+				+ this.tableName + "SET 'Doctor'='" + f1.getDoctor() + "', 'Diagnose'='"+ f1.getDiagnosis() 
+				+ "', 'Status'='" + f1.getStatus()
+				+ "' WHERE 'idForms'='" + f1.getId() + "';";
+		this.executeUpdate(conn, updateString);
+	}
+	public ResultSet retrieveListofForms(Person user, String status){
+		String retrieveString;
+		
+		if(user instanceof Doctor){
+			retrieveString = "SELECT * FROM test . Forms WHERE Doctor = '" + user.getName() + "' AND Status = '" + status + "';";
+			System.out.println(retrieveString);
+		}else{
+			retrieveString = "SELECT * FROM test . Forms WHERE Patient = '" + user.getName() + "' AND Status = '" + status + "';";
+			System.out.println(retrieveString);
+		}
+		
+		
+		Statement st = conn.createStatement();
+		ResultSet rs = st.executeQuery(retrieveString);
+		
+		return rs;
+		
+	}
+	
+	public Form retrieveForm(Person user, int id){
+		return null;
+		
+	}
+	
+	/*
+	 * INSERT INTO `test`.`Patients` (`NAME`, `EMAIL`, `PASSWORD`) VALUES
+	 * ('Hey', 'dsds', 'dsds');
+	 */
+	public void insertData(String newName, String newEmail, String newPassword) throws SQLException {
+		
+			this.tableName = "Patients";
+			String inputString = "INSERT INTO " + this.dbName + " . "
+					+ this.tableName + " (`NAME`, `EMAIL`, `PASSWORD`) "
+					+ " VALUES ('" + newName + "', '" + newEmail + "', '"
+					+ newPassword + "');";
+			System.out.println(inputString);
+
+			this.executeUpdate(conn, inputString);
+
+
+	}
+
+	/*
+	 * Update Database with person
+	 *UPDATE `test`.`Patients` SET `NAME`='Ddav', `EMAIL`='da' WHERE `ID`='1';
+	 *UPDATE 'test'.'Doctors' SET `NAME`='Ddav', `EMAIL`='da', 'Threshold'='3' WHERE `ID`='1'
+	 */
+	public void updatePerson(Person user) throws SQLException{
+		String updateString;
+		
+		if(user instanceof Patient){
+			this.tableName = "Patients";
+			updateString = "UPDATE " + this.dbName + " . "
+					+ this.tableName + "SET 'NAME'='" + user.getName() + "', 'PASSWORD'='" + user.getPassword() + "' WHERE 'ID'='"
+					+ user.getId() + "';";
+		}else{
+			this.tableName = "Doctors";
+			Doctor temp = (Doctor) user;
+			updateString = "UPDATE " + this.dbName + " . "
+				+ this.tableName + "SET 'NAME'='" + temp.getName() + "', 'PASSWORD'='" + temp.getPassword() + "', 'Threshold'='"+ temp.getThreshold() + "' WHERE 'ID'='"
+				+ user.getId() + "';";
+		}
+		
+		
+		System.out.println(updateString);
+
+		this.executeUpdate(conn, updateString);
+	}
+	/*
+	 * Retrieves Passward and other data
+	 */
+	
+	public Person retrievePerson(String newTableName, String username, String password) throws SQLException, AddressException {
+		String retrieveString = "SELECT * FROM test . " + newTableName
+				+ " WHERE email = '" + username + "' AND password = '" + password + "';";
+		System.out.println(retrieveString);
+
+		Statement st = conn.createStatement();
+		ResultSet rs = st.executeQuery(retrieveString);
+		if (rs.next()) {
+			/* Getting error:
+			 * java.lang.IllegalArgumentException: Invalid UUID string: 1
+			 */
+			//UUID id = UUID.fromString(rs.getString("ID"));
+			
+			// Possible data fields
+			int id;
+			String name;
+			InternetAddress email;
+			
+			if(newTableName.equals("Doctors")){
+				id = rs.getInt("ID");
+				name = rs.getString("NAME");
+				email = new InternetAddress(rs.getString("EMAIL"));
+				int threshold = rs.getInt("Threshold");
+				Person temp = new Doctor(name, id, email, password, threshold);
+				return temp;
+			}else{
+				id = rs.getInt("ID");
+				name = rs.getString("NAME");
+				email = new InternetAddress(rs.getString("EMAIL"));
+				Person temp = new Person(name, id, email, password);
+				return temp;
+			}
+			
+		}else {
+			return null;
+		}
+
+	}
+
+	
+}

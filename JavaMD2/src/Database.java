@@ -201,6 +201,7 @@ public class Database {
 	}
 
 	/*
+<<<<<<< HEAD
 	 * Update Database with person
 	 *UPDATE `test`.`Patients` SET `NAME`='Ddav', `EMAIL`='da' WHERE `ID`='1';
 	 *UPDATE 'test'.'Doctors' SET `NAME`='Ddav', `EMAIL`='da', 'Threshold'='3' WHERE `ID`='1'
@@ -228,6 +229,9 @@ public class Database {
 	}
 	/*
 	 * Retrieves Passward and other data
+=======
+	 * Retrieves Password and other data
+>>>>>>> master
 	 */
 	
 	public Person retrievePerson(String newTableName, String username, String password) throws SQLException, AddressException {
@@ -241,6 +245,7 @@ public class Database {
 			/* Getting error:
 			 * java.lang.IllegalArgumentException: Invalid UUID string: 1
 			 */
+<<<<<<< HEAD
 			//UUID id = UUID.fromString(rs.getString("ID"));
 			
 			// Possible data fields
@@ -264,6 +269,14 @@ public class Database {
 			}
 			
 		}else {
+=======
+			UUID id = UUID.fromString(rs.getString("ID"));
+			InternetAddress email = new InternetAddress(rs.getString("EMAIL"));
+			Person temp = new Person(name, id, email, password);
+			System.out.println(temp.toString());
+			return temp;
+		} else {
+>>>>>>> master
 			return null;
 		}
 

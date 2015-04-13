@@ -127,7 +127,18 @@ public class Login_Panel extends JPanel {
 				
 			}
 		});
-		btnEnter.setBounds(293, 143, 117, 29);
+		btnEnter.setBounds(193, 143, 134, 29);
 		add(btnEnter);
+		
+		// Reset password button
+		JButton btnReset = new JButton("Reset Password");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				MDGui.initializePassResetForm();
+			}
+		});
+		btnReset.setBounds(193, 157, 134, 29);
+		add(btnReset);
 	}
 }

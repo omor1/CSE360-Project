@@ -1,0 +1,127 @@
+public class Form {
+	//What is scale for?
+	public enum Scale {
+		ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(
+				9), TEN(10);
+
+		private final int value;
+
+		private Scale(int value) {
+			this.value = value;
+		}
+
+		public int getValue() {
+			return value;
+		}
+	}
+
+	public enum Status {
+		PENDING, COMPLETED;
+	}
+	private final int id;
+	private final int nausea;
+	private final int pain;
+	private final int fatigue;
+	private final int anxiety;
+	private final int shortnessOfBreath;
+	private final String comments;
+	private String status;
+	private String diagnosis;
+	private int priority;
+	private final String patient;
+	private String doctor;
+	
+	public Form(int i, int j, int k, int l,int m, String comments) {
+		this.id = 0;
+		this.nausea = i;
+		this.pain = j;
+		this.fatigue = k;
+		this.anxiety = l;
+		this.shortnessOfBreath = m;
+		this.comments = comments;
+		this.setStatus("Pending");
+		this.setDiagnosis(null);
+		this.priority = this.nausea + this.pain + this.anxiety + this.fatigue + this.shortnessOfBreath;
+		this.patient = MDGui.user.getName();
+		
+	}
+	// add status to constructor for the constructor from database
+	public Form(int newid, int n, int p, int f, int a,int s, String comments, String diagnosis, String status, String patient, String doctor) {
+		this.id = newid;
+		this.nausea = i;
+		this.pain = j;
+		this.fatigue = k;
+		this.anxiety = l;
+		this.shortnessOfBreath = m;
+		this.comments = comments;
+		this.status = status;
+		this.diagnosis = diagnosis;
+		this.priority = this.nausea + this.pain + this.anxiety + this.fatigue + this.shortnessOfBreath;
+		this.patient = patient;
+		this.doctor = doctor;
+		
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int getNausea() {
+		return nausea;
+	}
+
+	public int getPain() {
+		return pain;
+	}
+
+	public int getFatigue() {
+		return fatigue;
+	}
+
+	public int getAnxiety() {
+		return anxiety;
+	}
+
+	public int getShortnessOfBreath() {
+		return shortnessOfBreath;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(String diagnosis) {
+		this.doctor = MDGui.user.getName();
+		this.diagnosis = diagnosis;
+	}
+	
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+
+	public String getPatient() {
+		return patient;
+	}
+
+	public String getDoctor() {
+		return doctor;
+	}
+	
+
+}
