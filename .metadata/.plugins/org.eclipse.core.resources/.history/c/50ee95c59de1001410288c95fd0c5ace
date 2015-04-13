@@ -24,6 +24,8 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+<<<<<<< HEAD
 	public String getPassword() {
 		return password;
 	}

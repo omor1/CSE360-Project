@@ -1,9 +1,16 @@
 import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MDGui {
 
 	private static JFrame frame;
+	private JPanel panel;
+	private int state = 0;
 	public static Database db;
 	public static Person user;
 
@@ -46,7 +53,7 @@ public class MDGui {
 	 */
 	public static void initializeLogin() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 700, 450);
+		frame.setBounds(200, 200, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new Login_Panel());
 	}
@@ -82,10 +89,5 @@ public class MDGui {
 	}
 	public static void initializeResetPassword(){
 		frame.add(new ResetPassword_Panel());
-	}
-
-	public static void initializePassResetForm() {
-		frame.add(new ResetPassword_Panel());
-		
 	}
 }

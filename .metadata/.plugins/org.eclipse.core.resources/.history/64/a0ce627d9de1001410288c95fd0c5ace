@@ -28,7 +28,8 @@ public class CreateForm_Panel extends JPanel {
 		lblCreateForm.setFont(new Font("Lucida Grande", Font.BOLD, 26));
 		lblCreateForm.setBounds(153, 0, 170, 32);
 		add(lblCreateForm);
-
+		
+<<<<<<< HEAD
 		JLabel lblS = new JLabel("Nausea");
 		lblS.setHorizontalAlignment(SwingConstants.CENTER);
 		lblS.setBounds(20, 50, 61, 16);
@@ -53,6 +54,26 @@ public class CreateForm_Panel extends JPanel {
 		lblS_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblS_4.setToolTipText("");
 		lblS_4.setBounds(20, 140, 176, 16);
+=======
+		JLabel lblS = new JLabel("Nausea:");
+		lblS.setBounds(20, 50, 61, 16);
+		add(lblS);
+		
+		JLabel lblS_1 = new JLabel("Pain:");
+		lblS_1.setBounds(258, 50, 23, 16);
+		add(lblS_1);
+		
+		JLabel lblS_2 = new JLabel("Fatigue:");
+		lblS_2.setBounds(20, 98, 61, 16);
+		add(lblS_2);
+		
+		JLabel lblS_3 = new JLabel("Anxiety:");
+		lblS_3.setBounds(258, 98, 44, 16);
+		add(lblS_3);
+		
+		JLabel lblS_4 = new JLabel("Shortness of breath:");
+		lblS_4.setBounds(20, 140, 103, 16);
+>>>>>>> master
 		add(lblS_4);
 		
 		JLabel lblAdditionalComments = new JLabel("Additional Comments(max 255 characters):");
