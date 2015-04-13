@@ -1,0 +1,250 @@
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import java.awt.Font;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.border.Border;
+
+public class RegisterPatient extends JPanel implements ActionListener {
+
+    String msg="";
+    JButton btnNew,btnSubmit,btnView;
+    JLabel lblRegister, lblFName,lblLName,lblGender,lblQua,lblMName,lblDOB,lblWeight,lblHeight,lblAllergy;
+    JLabel lblUserID, lblPassword, lblEmail, lblPhone;
+    JTextField txtFName, txtLName, txtMName, txtDOB, txtWeight, txtUser,txtPass,txtEmail,txtPhone;
+	JTextArea txtAllergies, txtOutput;
+    CheckboxGroup ChkGrp;
+    Checkbox chkMale,chkFemale;
+    Checkbox chkMca,chkBca,chkBba,chkMba;
+    JPanel top;
+    @SuppressWarnings("rawtypes")
+	JComboBox comboFoot, comboInches;
+    protected String gender,weight,height,feet,inches, DOB, FName,LName,MName,phone,password,id,email,allergies;
+    String[] heightFoot = {"Feet","4","5","6","7"};
+    String[] heightInches = {"Inches","0","1","2","3","4","5","6","7","8","9","10","11"};
+	/**
+	 * Create the panel.
+	 */
+	public RegisterPatient() {
+		
+		setLayout(null);
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		lblRegister = new JLabel("Registration Form");
+		lblRegister.setBounds(186,11,500, 32);
+		lblRegister.setFont(new Font("Lucida Grande", Font.BOLD, 26));
+		add(lblRegister);
+		
+		lblFName = new JLabel("First Name: ");
+		lblFName.setBounds(16, 56, 83, 25);
+		add(lblFName);
+		
+		txtFName = new JTextField(25);
+		txtFName.setBounds(111, 55, 150, 25);
+		add( txtFName);
+	    
+		lblLName = new JLabel("Last Name: ");
+		lblLName.setBounds(273,55,74,25);
+		add(lblLName);
+		
+		txtLName = new JTextField(25);
+		txtLName.setBounds(345, 55, 150, 25);
+		add(txtLName);
+	    
+		lblMName = new JLabel("Middle Initial: ");
+		lblMName.setBounds(509,55,100,25);
+		add(lblMName);
+		
+		txtMName = new JTextField(2);
+		txtMName.setBounds(606, 55, 31, 25);
+		add(txtMName);
+		
+		lblGender = new JLabel("Gender: ");
+		lblGender.setBounds(16, 93, 65, 25);
+		add(lblGender);
+        
+		chkMale = new Checkbox("Male: ");
+        chkMale.setBounds(46, 190, 50, 25);
+        
+        chkFemale = new Checkbox("Female: ");
+        chkFemale.setBounds(201, 174, 60, 25);
+		
+        add(chkMale);
+        add(chkFemale);
+		
+		lblDOB = new JLabel("Date of Birth:   MM/DD/YYYY ");
+		lblDOB.setBounds(273, 92, 200, 25);
+		add(lblDOB);
+		
+		txtDOB = new JTextField();
+		txtDOB.setBounds(485, 92, 93, 25);
+		add(txtDOB);
+		
+		lblWeight = new JLabel("Weight (lbs): ");
+		lblWeight.setBounds(13, 150, 86, 25);
+		add(lblWeight);
+		
+		txtWeight = new JTextField();
+		txtWeight.setBounds(111, 150, 57, 25);
+		add(txtWeight);
+		
+		lblHeight = new JLabel("Height (ft): ");
+		lblHeight.setBounds(180, 150, 81, 25);
+		add(lblHeight);
+
+		comboFoot = new JComboBox(heightFoot);
+		comboFoot.setBounds(273, 150, 50, 25);
+		add(comboFoot);
+		
+		comboInches = new JComboBox(heightInches);
+		comboInches.setBounds(335, 150, 75, 25);
+		add(comboInches);
+		
+		lblUserID = new JLabel("ID: (6 Digits): ");
+		lblUserID.setBounds(16, 205, 88, 25);
+		add(lblUserID);
+		
+		txtUser = new JTextField();
+		txtUser.setBounds(111, 205, 75, 25);
+		add(txtUser);
+        
+		
+		lblPassword = new JLabel("Password: (> 8 Characters): ");
+		lblPassword.setBounds(198, 205, 187, 25);
+		add(lblPassword);
+		
+		txtPass = new JTextField();
+		txtPass.setBounds(397, 204, 75, 25);
+		add(txtPass);
+		
+		lblEmail = new JLabel("Email: ");
+		lblEmail.setBounds(16, 252, 42, 25);
+		add(lblEmail);
+		
+		txtEmail = new JTextField();
+		txtEmail.setBounds(70, 251, 200, 25);
+		add(txtEmail);
+		
+		lblPhone = new JLabel("Phone: ");
+		lblPhone.setBounds(308, 252, 50, 25);
+		add(lblPhone);
+		
+		txtPhone = new JTextField();
+		txtPhone.setBounds(370, 251, 200, 25);
+		add(txtPhone);
+		
+		lblAllergy = new JLabel("Known Allergies seperated by Commas");
+		lblAllergy.setBounds(16,293,251,25);
+		add(lblAllergy);
+		
+		txtAllergies = new JTextArea();
+		txtAllergies.setBounds(16,330,392,113);
+		txtAllergies.setBorder(border);
+		add(txtAllergies);
+		
+		btnSubmit = new JButton("Submit");
+		btnSubmit.setBounds(24,475, 100, 50);
+		add(btnSubmit);
+		
+		btnNew = new JButton("Reset");
+		btnNew.setBounds(366,475,100, 50);
+		add(btnNew);
+		
+		txtOutput = new JTextArea("Strings Dislayed here");
+		txtOutput.setBounds(26,536,500,200);
+		txtOutput.setBorder(border);
+		add(txtOutput);
+	    btnSubmit.addActionListener(this);
+	    btnNew.addActionListener(this);
+	  }
+	  public void actionPerformed(ActionEvent event) {
+		    Object source = event.getSource();
+		    if (source == btnSubmit && filledOut()){
+		       String initial = txtMName.getText();
+		       if (chkMale.getState() == true && chkFemale.getState() == false ){
+		    	   gender = chkMale.getLabel();
+		       }
+		       if (chkFemale.getState() == true && chkMale.getState() == false){
+		    	   gender = chkFemale.getLabel();
+			       }
+		       if ((chkFemale.getState() == true && chkMale.getState() == true) || (chkFemale.getState() == false && chkMale.getState() == false)){
+		    	   gender = "";
+		       }
+		       if (initial != null){
+		    	   MName += " ";
+		       }
+		      //All Values in Text Fields placed into Strings
+		       feet = String.valueOf(comboFoot.getSelectedItem());
+		       inches = String.valueOf(comboInches.getSelectedItem());
+		       height = feet.concat("'" + inches + '"');
+		       weight = txtWeight.getText();
+		       DOB = txtDOB.getText();
+		       MName = txtMName.getText();
+		       FName = txtFName.getText();
+		       LName = txtLName.getText();
+		       phone = txtPhone.getText();
+		       email = txtEmail.getText();
+		       allergies = txtAllergies.getText();
+		       id = txtUser.getText();
+		       password = txtPass.getText();
+		       
+		       //For the output Text Area
+		       txtOutput.setText(FName + ' ' + MName + LName);
+		       txtOutput.append('\n' + height);
+		       txtOutput.append('\n' + DOB);
+		       txtOutput.append('\n' + gender);
+		       txtOutput.append('\n' + weight);
+		       txtOutput.append('\n' + phone);
+		       txtOutput.append('\n' + password);
+		       txtOutput.append('\n' + id);
+		       txtOutput.append('\n' + email);
+		       
+		    }
+		    else if (source == btnNew) {
+		       //Reset All Values
+		       txtOutput.setText("");
+		       txtFName.setText("");
+		       txtMName.setText("");
+		       txtLName.setText("");
+		       txtDOB.setText("");
+		       txtWeight.setText("");
+		       MName = "";
+		       FName = "";
+		       LName = "";
+		       gender = "";
+		       height = "";
+		       weight = "";
+		       phone = "";
+		       password = "";
+		       email = "";
+		       id = "";
+		       DOB = "";  
+		    }
+		  }
+	  
+	  	
+			private boolean filledOut(){
+	  			if(comboFoot.getSelectedItem() == "Feet" || comboInches.getSelectedItem() == "Inches")
+				{
+				return false;
+				}
+				if(txtMName.getText() == "" || txtFName.getText() =="" || txtLName.getText() == "" ||
+				   txtPhone.getText() == "" || txtEmail.getText() == "" || txtWeight.getText() == "" ||
+			       txtDOB.getText() == "" || txtEmail.getText() == "" || txtUser.getText() == "" ||
+			       txtPass.getText() == "" || gender == "")
+				{
+					return false;
+				}
+				else{
+					return true;
+				}
+		      
+		}
+	}
