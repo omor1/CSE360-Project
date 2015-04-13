@@ -20,39 +20,11 @@ public class Diagnose_Panel extends JPanel {
 		setLayout(null);
 		try {
 			f1 = MDGui.db.retrieveNextPatient(MDGui.user);
-			MDGui.db.updateForm(f1);
-		
-		JLabel lblNausea = new JLabel("Nausea: " + f1.getNausea());
-		lblNausea.setBounds(19, 29, 79, 16);
-		add(lblNausea);
-		
-		JLabel lblPain = new JLabel("Pain:" + f1.getPain());
-		lblPain.setBounds(19, 46, 61, 16);
-		add(lblPain);
-		
-		JLabel lblFatigue = new JLabel("Fatigue:" + f1.getFatigue());
-		lblFatigue.setBounds(19, 64, 61, 16);
-		add(lblFatigue);
-		
-		JLabel lblAnxiety = new JLabel("Anxiety:" + f1.getAnxiety());
-		lblAnxiety.setBounds(19, 82, 61, 16);
-		add(lblAnxiety);
-		
-		JLabel lblShortnessofbreadth = new JLabel("Shortness of Breadth:" + f1.getShortnessOfBreath());
-		lblShortnessofbreadth.setBounds(19, 101, 165, 16);
-		add(lblShortnessofbreadth);
-		
-		JTextPane txtpnHello = new JTextPane();
-		txtpnHello.setText("Name: " + f1.getPatient() + "\n"
-				+ "Comments: " + f1.getComments() + "\n"
-				+"Priority: " + f1.getPriority() + "\n"
-				+ "Status: " + f1.getStatus() + "\n");
-		txtpnHello.setBounds(245, 34, 187, 130);
-		add(txtpnHello);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setBounds(19, 184, 230, 95);
 		add(editorPane);
@@ -94,5 +66,33 @@ public class Diagnose_Panel extends JPanel {
 		btnHomepage.setBounds(281, 210, 117, 29);
 		add(btnHomepage);
 		
+		JLabel lblNausea = new JLabel("Nausea: " + f1.getNausea());
+		lblNausea.setBounds(19, 29, 79, 16);
+		add(lblNausea);
+		
+		JLabel lblPain = new JLabel("Pain:" + f1.getPain());
+		lblPain.setBounds(19, 46, 61, 16);
+		add(lblPain);
+		
+		JLabel lblFatigue = new JLabel("Fatigue:" + f1.getFatigue());
+		lblFatigue.setBounds(19, 64, 61, 16);
+		add(lblFatigue);
+		
+		JLabel lblAnxiety = new JLabel("Anxiety:" + f1.getAnxiety());
+		lblAnxiety.setBounds(19, 82, 61, 16);
+		add(lblAnxiety);
+		
+		JLabel lblShortnessofbreadth = new JLabel("Shortness of Breadth:" + f1.getShortnessOfBreath());
+		lblShortnessofbreadth.setBounds(19, 101, 165, 16);
+		add(lblShortnessofbreadth);
+		
+		JTextPane txtpnHello = new JTextPane();
+		txtpnHello.setText("Name: " + f1.getPatient() + "\n"
+				+ "Comments: " + f1.getComments() + "\n"
+				+"Priority: " + f1.getPriority() + "\n"
+				+ "Status: " + f1.getStatus() + "\n");
+		txtpnHello.setBounds(245, 34, 187, 130);
+		add(txtpnHello);
+
 	}
 }

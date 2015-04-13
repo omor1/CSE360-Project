@@ -32,12 +32,7 @@ setLayout(null);
 				List<Form> l;
 				try {
 					l = MDGui.db.retrieveListofForms(MDGui.user, "Pending");
-					String str = "";
-					for(int ii = 0; ii < l.size(); ii++){
-						str += l.get(ii).toString();
-						str += "\n";
-					}
-					editorPane.setText(str);
+					editorPane.setText(l.toString());
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -54,12 +49,7 @@ setLayout(null);
 			public void mouseClicked(MouseEvent e) {
 				try {
 					List<Form> l = MDGui.db.retrieveListofForms(MDGui.user, "Completed");
-					String str = "";
-					for(int ii = 0; ii < l.size(); ii++){
-						str += l.get(ii).toString();
-						str += "\n";
-					}
-					editorPane.setText(str);
+					editorPane.setText(l.toString());
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -1,28 +1,33 @@
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
+import javax.swing.JTextPane;
+import javax.swing.JFormattedTextField;
+import javax.swing.JSpinner;
+import javax.swing.JList;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JEditorPane;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
-
-public class ExistingFormDoctor_Panel extends JPanel {
-
+public class ExistingFormPatient_Panel extends JPanel {
+	private Form f1;
+	private Patient p1;
 	/**
 	 * Create the panel.
 	 */
-	public ExistingFormDoctor_Panel() {
-setLayout(null);
+	public ExistingFormPatient_Panel() {
+		setLayout(null);
 		
 		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(6, 72, 470, 142);
+		editorPane.setBounds(6, 72, 438, 129);
 		add(editorPane);
 		
 		JButton btnPendingForms = new JButton("Pending Forms");
@@ -35,7 +40,6 @@ setLayout(null);
 					String str = "";
 					for(int ii = 0; ii < l.size(); ii++){
 						str += l.get(ii).toString();
-						str += "\n";
 					}
 					editorPane.setText(str);
 				} catch (SQLException e1) {
@@ -52,12 +56,12 @@ setLayout(null);
 		btnCompletedForms.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				List<Form> l;
 				try {
-					List<Form> l = MDGui.db.retrieveListofForms(MDGui.user, "Completed");
+					l = MDGui.db.retrieveListofForms(MDGui.user, "Completed");
 					String str = "";
 					for(int ii = 0; ii < l.size(); ii++){
 						str += l.get(ii).toString();
-						str += "\n";
 					}
 					editorPane.setText(str);
 				} catch (SQLException e1) {
@@ -79,12 +83,11 @@ setLayout(null);
 		btnHomepage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				MDGui.intializeDoctor();
+				MDGui.intializePatient();
 			}
 		});
-		btnHomepage.setBounds(149, 226, 117, 29);
+		btnHomepage.setBounds(150, 252, 117, 29);
 		add(btnHomepage);
 
 	}
-
 }

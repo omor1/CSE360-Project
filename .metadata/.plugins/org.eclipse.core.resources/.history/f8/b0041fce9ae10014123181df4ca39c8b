@@ -35,7 +35,6 @@ setLayout(null);
 					String str = "";
 					for(int ii = 0; ii < l.size(); ii++){
 						str += l.get(ii).toString();
-						str += "\n";
 					}
 					editorPane.setText(str);
 				} catch (SQLException e1) {
@@ -57,7 +56,6 @@ setLayout(null);
 					String str = "";
 					for(int ii = 0; ii < l.size(); ii++){
 						str += l.get(ii).toString();
-						str += "\n";
 					}
 					editorPane.setText(str);
 				} catch (SQLException e1) {

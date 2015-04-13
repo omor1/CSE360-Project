@@ -20,8 +20,10 @@ public class Diagnose_Panel extends JPanel {
 		setLayout(null);
 		try {
 			f1 = MDGui.db.retrieveNextPatient(MDGui.user);
-			MDGui.db.updateForm(f1);
-		
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		JLabel lblNausea = new JLabel("Nausea: " + f1.getNausea());
 		lblNausea.setBounds(19, 29, 79, 16);
 		add(lblNausea);
@@ -49,10 +51,7 @@ public class Diagnose_Panel extends JPanel {
 				+ "Status: " + f1.getStatus() + "\n");
 		txtpnHello.setBounds(245, 34, 187, 130);
 		add(txtpnHello);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setBounds(19, 184, 230, 95);
 		add(editorPane);

@@ -37,7 +37,12 @@ public class ExistingFormPatient_Panel extends JPanel {
 				List<Form> l;
 				try {
 					l = MDGui.db.retrieveListofForms(MDGui.user, "Pending");
-					editorPane.setText(l.toString());
+					String str = "";
+					for(int ii = 0; ii < l.size(); ii++){
+						str += l.get(ii).toString();
+						str += "\n";
+					}
+					editorPane.setText(str);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -55,7 +60,12 @@ public class ExistingFormPatient_Panel extends JPanel {
 				List<Form> l;
 				try {
 					l = MDGui.db.retrieveListofForms(MDGui.user, "Completed");
-					editorPane.setText(l.toString());
+					String str = "";
+					for(int ii = 0; ii < l.size(); ii++){
+						str += l.get(ii).toString();
+						str += "\n";
+					}
+					editorPane.setText(str);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

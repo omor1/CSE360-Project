@@ -185,7 +185,6 @@ public class Database {
 			//(int newid, int i, int j, int k, int l,int m, String comments, String diagnosis, String status, String patient, String doctor)
 			Form F = new Form(rs.getInt("idForms"), rs.getInt("Nausea"), rs.getInt("Pain"), rs.getInt("Fatigue"), rs.getInt("Anxiety"), rs.getInt("ShortnessOfBreath"), 
 					rs.getString("Comments"), rs.getString("Diagnose"), rs.getString("Status"), rs.getString("Patient"), rs.getString("Doctor"));
-			System.out.println(F.toString());
 			return F;
 		}else{
 			return null;

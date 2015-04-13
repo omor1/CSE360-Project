@@ -6,8 +6,6 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.sql.SQLException;
-
 import javax.swing.JTextPane;
 
 
@@ -18,41 +16,8 @@ public class Diagnose_Panel extends JPanel {
 	 */
 	public Diagnose_Panel() {
 		setLayout(null);
-		try {
-			f1 = MDGui.db.retrieveNextPatient(MDGui.user);
-			MDGui.db.updateForm(f1);
+		f1 = MDGui.db.retrieveNextPatient(MDGui.user);
 		
-		JLabel lblNausea = new JLabel("Nausea: " + f1.getNausea());
-		lblNausea.setBounds(19, 29, 79, 16);
-		add(lblNausea);
-		
-		JLabel lblPain = new JLabel("Pain:" + f1.getPain());
-		lblPain.setBounds(19, 46, 61, 16);
-		add(lblPain);
-		
-		JLabel lblFatigue = new JLabel("Fatigue:" + f1.getFatigue());
-		lblFatigue.setBounds(19, 64, 61, 16);
-		add(lblFatigue);
-		
-		JLabel lblAnxiety = new JLabel("Anxiety:" + f1.getAnxiety());
-		lblAnxiety.setBounds(19, 82, 61, 16);
-		add(lblAnxiety);
-		
-		JLabel lblShortnessofbreadth = new JLabel("Shortness of Breadth:" + f1.getShortnessOfBreath());
-		lblShortnessofbreadth.setBounds(19, 101, 165, 16);
-		add(lblShortnessofbreadth);
-		
-		JTextPane txtpnHello = new JTextPane();
-		txtpnHello.setText("Name: " + f1.getPatient() + "\n"
-				+ "Comments: " + f1.getComments() + "\n"
-				+"Priority: " + f1.getPriority() + "\n"
-				+ "Status: " + f1.getStatus() + "\n");
-		txtpnHello.setBounds(245, 34, 187, 130);
-		add(txtpnHello);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setBounds(19, 184, 230, 95);
 		add(editorPane);
@@ -69,13 +34,7 @@ public class Diagnose_Panel extends JPanel {
 							+ " check your answers and resubmit");
 				}else{
 					JOptionPane.showMessageDialog(null, "Diagnose submited correctly!");
-					f1.setDiagnosis(editorPane.getText());
-					try {
-						MDGui.db.updateForm(f1);
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					
 					setVisible(false);
 					MDGui.intializeDoctor();
 				}
@@ -94,5 +53,30 @@ public class Diagnose_Panel extends JPanel {
 		btnHomepage.setBounds(281, 210, 117, 29);
 		add(btnHomepage);
 		
+		JLabel lblNausea = new JLabel("Nausea: ");
+		lblNausea.setBounds(19, 29, 61, 16);
+		add(lblNausea);
+		
+		JLabel lblPain = new JLabel("Pain:");
+		lblPain.setBounds(19, 46, 61, 16);
+		add(lblPain);
+		
+		JLabel lblFatigue = new JLabel("Fatigue:");
+		lblFatigue.setBounds(19, 64, 61, 16);
+		add(lblFatigue);
+		
+		JLabel lblAnxiety = new JLabel("Anxiety:");
+		lblAnxiety.setBounds(19, 82, 61, 16);
+		add(lblAnxiety);
+		
+		JLabel lblShortnessofbreadth = new JLabel("Shortness of Breadth:");
+		lblShortnessofbreadth.setBounds(19, 101, 165, 16);
+		add(lblShortnessofbreadth);
+		
+		JTextPane txtpnHello = new JTextPane();
+		txtpnHello.setText("hello");
+		txtpnHello.setBounds(245, 34, 187, 130);
+		add(txtpnHello);
+
 	}
 }
