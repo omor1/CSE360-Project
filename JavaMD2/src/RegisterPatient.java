@@ -51,7 +51,7 @@ public class RegisterPatient extends JPanel implements ActionListener {
 		add( txtFName);
 	    
 		lblLName = new JLabel("Last Name: ");
-		lblLName.setBounds(271,100,65,25);
+		lblLName.setBounds(271,100,89,25);
 		add(lblLName);
 		
 		txtLName = new JTextField(25);
@@ -80,11 +80,11 @@ public class RegisterPatient extends JPanel implements ActionListener {
         add(chkFemale);
 		
 		lblDOB = new JLabel("Date of Birth:   MM/DD/YYYY ");
-		lblDOB.setBounds(221, 150, 150, 25);
+		lblDOB.setBounds(221, 150, 162, 25);
 		add(lblDOB);
 		
 		txtDOB = new JTextField();
-		txtDOB.setBounds(366, 150, 75, 25);
+		txtDOB.setBounds(378, 150, 75, 25);
 		add(txtDOB);
 		
 		lblWeight = new JLabel("Weight (lbs): ");
@@ -96,7 +96,7 @@ public class RegisterPatient extends JPanel implements ActionListener {
 		add(txtWeight);
 		
 		lblHeight = new JLabel("Height (ft): ");
-		lblHeight.setBounds(134, 200, 60, 25);
+		lblHeight.setBounds(134, 200, 81, 25);
 		add(lblHeight);
 
 		comboFoot = new JComboBox(heightFoot);
@@ -117,19 +117,19 @@ public class RegisterPatient extends JPanel implements ActionListener {
         
 		
 		lblPassword = new JLabel("Password: (> 8 Characters): ");
-		lblPassword.setBounds(186, 250, 150, 25);
+		lblPassword.setBounds(186, 250, 162, 25);
 		add(lblPassword);
 		
 		txtPass = new JTextField();
-		txtPass.setBounds(333, 250, 75, 25);
+		txtPass.setBounds(343, 250, 75, 25);
 		add(txtPass);
 		
 		lblEmail = new JLabel("Email: ");
-		lblEmail.setBounds(26, 286, 31, 25);
+		lblEmail.setBounds(26, 286, 50, 25);
 		add(lblEmail);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(67, 286, 200, 25);
+		txtEmail.setBounds(76, 286, 200, 25);
 		add(txtEmail);
 		
 		lblPhone = new JLabel("Phone: ");
@@ -158,7 +158,7 @@ public class RegisterPatient extends JPanel implements ActionListener {
 		add(btnNew);
 		
 		txtOutput = new JTextArea("Strings Dislayed here");
-		txtOutput.setBounds(26,536,500,200);
+		txtOutput.setBounds(26,536,500,187);
 		txtOutput.setBorder(border);
 		add(txtOutput);
 	    btnSubmit.addActionListener(this);

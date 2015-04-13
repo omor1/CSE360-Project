@@ -56,10 +56,7 @@ public class Patient extends Person {
 	private final MedicalInformation medicalInformation;
 	private final List<Form> forms;
 
-	public Patient(String name, UUID id, InternetAddress email, Gender gender,
-			LocalDate birthDate, double height, double weight,
-			MedicalInformation medicalInformation, List<Form> forms,
-			String password) {
+	public Patient(String name, UUID id, InternetAddress email, String password) {
 		super(name, id, email, password);
 		this.setGender(gender);
 		this.birthDate = birthDate;
