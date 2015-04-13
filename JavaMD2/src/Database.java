@@ -133,7 +133,7 @@ public class Database {
 	 * Retrieves Password and other data
 	 */
 	
-	public Person retrievePerson(String name, String password) throws SQLException, AddressException {
+	public Patient retrievePatient(String name, String password) throws SQLException, AddressException {
 		String retrieveString = "SELECT * FROM test . Patients"
 				+ " WHERE name = '" + name + "' AND password = '" + password + "';";
 		System.out.println(retrieveString);
@@ -147,12 +147,34 @@ public class Database {
 			 */
 			UUID id = UUID.fromString(rs.getString("ID"));
 			InternetAddress email = new InternetAddress(rs.getString("EMAIL"));
-			Person temp = new Person(name, id, email, password);
+			Patient temp = new Patient(name, id, email, password);
 			System.out.println(temp.toString());
 			return temp;
 		} else {
 			return null;
 		}
+	}
+		public Doctor retrieveDoctor(String name, String password) throws SQLException, AddressException {
+			String retrieveString = "SELECT * FROM test . Doctors"
+					+ " WHERE name = '" + name + "' AND password = '" + password + "';";
+			System.out.println(retrieveString);
+
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery(retrieveString);
+			if (rs.next()) {
+				System.out.println("Creating Person to return");
+				/* Getting error:
+				 * java.lang.IllegalArgumentException: Invalid UUID string: 1
+				 */
+				UUID id = UUID.fromString(rs.getString("ID"));
+				InternetAddress email = new InternetAddress(rs.getString("EMAIL"));
+				Doctor temp = new Doctor(name, id, email, password);
+				System.out.println(temp.toString());
+				return temp;
+			} else {
+				return null;
+			}
+		
 
 	}
 }
