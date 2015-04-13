@@ -1,5 +1,5 @@
 public class Form {
-
+	//What is scale for?
 	public enum Scale {
 		ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(
 				9), TEN(10);
@@ -18,45 +18,71 @@ public class Form {
 	public enum Status {
 		PENDING, COMPLETED;
 	}
-
-	private final Scale nausea;
-	private final Scale pain;
-	private final Scale fatigue;
-	private final Scale anxiety;
-	private final Scale shortnessOfBreath;
+	private final int id;
+	private final int nausea;
+	private final int pain;
+	private final int fatigue;
+	private final int anxiety;
+	private final int shortnessOfBreath;
 	private final String comments;
-	private Status status;
+	private String status;
 	private String diagnosis;
-
-	public Form(Scale nausea, Scale pain, Scale fatigue, Scale anxiety,
-			Scale shortnessOfBreath, String comments) {
-		this.nausea = nausea;
-		this.pain = pain;
-		this.fatigue = fatigue;
-		this.anxiety = anxiety;
-		this.shortnessOfBreath = shortnessOfBreath;
+	private int priority;
+	private final String patient;
+	private String doctor;
+	
+	public Form(int i, int j, int k, int l,int m, String comments) {
+		this.id = 0;
+		this.nausea = i;
+		this.pain = j;
+		this.fatigue = k;
+		this.anxiety = l;
+		this.shortnessOfBreath = m;
 		this.comments = comments;
-		this.setStatus(Status.PENDING);
+		this.setStatus("Pending");
 		this.setDiagnosis(null);
+		this.priority = this.nausea + this.pain + this.anxiety + this.fatigue + this.shortnessOfBreath;
+		this.patient = MDGui.user.getName();
+		
+	}
+	// add status to constructor for the constructor from database
+	public Form(int newid, int n, int p, int f, int a,int s, String comments, String diagnosis, String status, String patient, String doctor) {
+		this.id = newid;
+		this.nausea = n;
+		this.pain = p;
+		this.fatigue = f;
+		this.anxiety = a;
+		this.shortnessOfBreath = s;
+		this.comments = comments;
+		this.status = status;
+		this.diagnosis = diagnosis;
+		this.priority = this.nausea + this.pain + this.anxiety + this.fatigue + this.shortnessOfBreath;
+		this.patient = patient;
+		this.doctor = doctor;
+		
 	}
 
-	public Scale getNausea() {
+	public int getId() {
+		return id;
+	}
+
+	public int getNausea() {
 		return nausea;
 	}
 
-	public Scale getPain() {
+	public int getPain() {
 		return pain;
 	}
 
-	public Scale getFatigue() {
+	public int getFatigue() {
 		return fatigue;
 	}
 
-	public Scale getAnxiety() {
+	public int getAnxiety() {
 		return anxiety;
 	}
 
-	public Scale getShortnessOfBreath() {
+	public int getShortnessOfBreath() {
 		return shortnessOfBreath;
 	}
 
@@ -64,11 +90,11 @@ public class Form {
 		return comments;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -77,7 +103,34 @@ public class Form {
 	}
 
 	public void setDiagnosis(String diagnosis) {
+		this.doctor = MDGui.user.getName();
 		this.diagnosis = diagnosis;
 	}
+	
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+
+	public String getPatient() {
+		return patient;
+	}
+
+	public String getDoctor() {
+		return doctor;
+	}
+	@Override
+	public String toString() {
+		return "Form [id=" + id + ", nausea=" + nausea + ", pain=" + pain
+				+ ", fatigue=" + fatigue + ", anxiety=" + anxiety
+				+ ", shortnessOfBreath=" + shortnessOfBreath + ", comments="
+				+ comments + ", status=" + status + ", diagnosis=" + diagnosis
+				+ ", priority=" + priority + ", patient=" + patient
+				+ ", doctor=" + doctor + "]";
+	}
+	
 
 }

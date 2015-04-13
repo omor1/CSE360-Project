@@ -12,7 +12,8 @@ public class MDGui {
 	private JPanel panel;
 	private int state = 0;
 	public static Database db;
-	public Person user;
+	public static Person user;
+
 	/*
 	 * private Connection conn = null; PreparedStatement pst = null; ResultSet
 	 * rs = null;
@@ -50,7 +51,7 @@ public class MDGui {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initializeLogin() {
+	public static void initializeLogin() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

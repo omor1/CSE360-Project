@@ -8,13 +8,13 @@ public class Person {
 	private final int id;
 	private final InternetAddress email;
 	
-	private final String password; // THIS WILL CHANGE
+	private String password; // THIS WILL CHANGE
 
-	public Person(String name, int id, InternetAddress email, String password) {
-		this.setName(name);
-		this.id = id;
-		this.email = email;
-		this.password = password;
+	public Person(String newName, int newId, InternetAddress newEmail, String newPassword) {
+		this.name = newName;
+		this.id = newId;
+		this.email = newEmail;
+		this.password = newPassword;
 	}
 
 	public String getName() {
@@ -25,6 +25,14 @@ public class Person {
 		this.name = name;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -32,10 +40,11 @@ public class Person {
 	public InternetAddress getEmail() {
 		return email;
 	}
-	
-	public String toString(){
-		String str1 = (name  + "\t" + password);
-		return str1;
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", id=" + id + ", email=" + email
+				+ ", password=" + password + "]";
 	}
 	
 }

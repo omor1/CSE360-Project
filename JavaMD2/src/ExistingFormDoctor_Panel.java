@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
@@ -20,14 +22,22 @@ public class ExistingFormDoctor_Panel extends JPanel {
 setLayout(null);
 		
 		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(6, 72, 438, 129);
+		editorPane.setBounds(6, 72, 470, 142);
 		add(editorPane);
 		
 		JButton btnPendingForms = new JButton("Pending Forms");
 		btnPendingForms.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				editorPane.setText("List of Pending Forms");
+				List<Form> l;
+				try {
+					l = MDGui.db.retrieveListofForms(MDGui.user, "Pending");
+					editorPane.setText(l.toString());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnPendingForms.setBounds(24, 43, 155, 29);
@@ -37,7 +47,13 @@ setLayout(null);
 		btnCompletedForms.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				editorPane.setText("List of Completed Forms");
+				try {
+					List<Form> l = MDGui.db.retrieveListofForms(MDGui.user, "Completed");
+					editorPane.setText(l.toString());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnCompletedForms.setBounds(243, 43, 155, 29);
@@ -56,7 +72,7 @@ setLayout(null);
 				MDGui.intializeDoctor();
 			}
 		});
-		btnHomepage.setBounds(150, 265, 117, 29);
+		btnHomepage.setBounds(149, 226, 117, 29);
 		add(btnHomepage);
 
 	}

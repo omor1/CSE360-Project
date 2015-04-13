@@ -12,10 +12,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import javax.swing.SwingConstants;
 
 
 public class CreateForm_Panel extends JPanel {
-	private Form f1;
+	private Form form;
 	/**
 	 * Create the panel.
 	 */
@@ -27,28 +29,35 @@ public class CreateForm_Panel extends JPanel {
 		lblCreateForm.setBounds(153, 0, 170, 32);
 		add(lblCreateForm);
 		
-		JLabel lblS = new JLabel("S1");
+		JLabel lblS = new JLabel("Nausea");
+		lblS.setHorizontalAlignment(SwingConstants.CENTER);
 		lblS.setBounds(20, 50, 61, 16);
 		add(lblS);
 		
-		JLabel lblS_1 = new JLabel("S2");
-		lblS_1.setBounds(258, 50, 23, 16);
+		JLabel lblS_1 = new JLabel("Pain");
+		lblS_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblS_1.setBounds(258, 50, 61, 16);
 		add(lblS_1);
 		
-		JLabel lblS_2 = new JLabel("S3");
+		JLabel lblS_2 = new JLabel("Fatigue");
+		lblS_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblS_2.setBounds(20, 98, 61, 16);
 		add(lblS_2);
 		
-		JLabel lblS_3 = new JLabel("S4");
-		lblS_3.setBounds(258, 98, 23, 16);
+		JLabel lblS_3 = new JLabel("Anexity");
+		lblS_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblS_3.setBounds(258, 98, 65, 16);
 		add(lblS_3);
 		
-		JLabel lblS_4 = new JLabel("S5");
-		lblS_4.setBounds(20, 140, 61, 16);
+		JLabel lblS_4 = new JLabel("Shortness of Breath");
+		lblS_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblS_4.setToolTipText("");
+		lblS_4.setBounds(20, 140, 176, 16);
 		add(lblS_4);
 		
-		JLabel lblAdditionalComments = new JLabel("Additional Comments:");
-		lblAdditionalComments.setBounds(20, 175, 176, 16);
+		JLabel lblAdditionalComments = new JLabel("Additional Comments(max 255 characters):");
+		lblAdditionalComments.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lblAdditionalComments.setBounds(20, 168, 270, 16);
 		add(lblAdditionalComments);
 		
 		JEditorPane dtrpnPatientscommit = new JEditorPane();
@@ -81,7 +90,7 @@ public class CreateForm_Panel extends JPanel {
 		add(comboBox4);
 		
 		JComboBox comboBox5 = new JComboBox(scaleOfPain);
-		comboBox5.setBounds(123, 136, 123, 27);
+		comboBox5.setBounds(208, 136, 123, 27);
 		add(comboBox5);
 		
 		JButton btnSubmit = new JButton("Submit");
@@ -93,8 +102,16 @@ public class CreateForm_Panel extends JPanel {
 				}else{
 					JOptionPane.showMessageDialog(null, "Form submited correctly!\n"
 							+ "Priority Level: " + comboToInt() );
-					// create form here
-					//f1 = new Form(comboBox1.getSelectedItem().toString(), comboBox1.getSelectedItem().toString(),comboBox1.getSelectedItem().toString(),comboBox1.getSelectedItem().toString(),comboBox1.getSelectedItem().toString());
+					
+					form = new Form(Integer.parseInt(comboBox1.getSelectedItem().toString()), Integer.parseInt(comboBox2.getSelectedItem().toString()),
+							Integer.parseInt(comboBox3.getSelectedItem().toString()), Integer.parseInt(comboBox4.getSelectedItem().toString()), Integer.parseInt(comboBox5.getSelectedItem().toString()),
+							dtrpnPatientscommit.getText());
+					try {
+						MDGui.db.createForm(form);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
 					setVisible(false);
 					MDGui.intializePatient();

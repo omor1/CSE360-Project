@@ -7,11 +7,14 @@ import javax.swing.JSpinner;
 import javax.swing.JList;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
+import java.util.List;
 
 
 public class ExistingFormPatient_Panel extends JPanel {
@@ -31,7 +34,15 @@ public class ExistingFormPatient_Panel extends JPanel {
 		btnPendingForms.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				editorPane.setText("List of Pending Forms");
+				List<Form> l;
+				try {
+					l = MDGui.db.retrieveListofForms(MDGui.user, "Pending");
+					editorPane.setText(l.toString());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnPendingForms.setBounds(24, 43, 155, 29);
@@ -41,7 +52,14 @@ public class ExistingFormPatient_Panel extends JPanel {
 		btnCompletedForms.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				editorPane.setText("List of Completed Forms");
+				List<Form> l;
+				try {
+					l = MDGui.db.retrieveListofForms(MDGui.user, "Completed");
+					editorPane.setText(l.toString());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnCompletedForms.setBounds(243, 43, 155, 29);

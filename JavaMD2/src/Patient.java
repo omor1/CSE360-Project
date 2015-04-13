@@ -56,7 +56,7 @@ public class Patient extends Person {
 	private final MedicalInformation medicalInformation;
 	private final List<Form> forms;
 
-	public Patient(String name, UUID id, InternetAddress email, Gender gender,
+	public Patient(String name, int id, InternetAddress email, Gender gender,
 			LocalDate birthDate, double height, double weight,
 			MedicalInformation medicalInformation, List<Form> forms,
 			String password) {
@@ -68,6 +68,8 @@ public class Patient extends Person {
 		this.medicalInformation = medicalInformation;
 		this.forms = forms;
 	}
+	
+	//public Patient(String name, int id, InternetAddress email, )
 
 	public Gender getGender() {
 		return gender;

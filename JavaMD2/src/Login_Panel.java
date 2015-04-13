@@ -95,10 +95,27 @@ public class Login_Panel extends JPanel {
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Person temp;
+				String table;
+				String username = txtUsername.getText();
+				String password = pwdPassword.getText();
+				if(rdbtnDoctor.isSelected() == true){
+					table = "Doctors";
+				}else{
+					table = "Patients";
+				}
 				try {
-					temp = MDGui.db.retrievePerson(txtUsername.getText(), pwdPassword.getText());
+					
+					temp = MDGui.db.retrievePerson(table,username, password);
 					if(temp == null){
 						JOptionPane.showMessageDialog(null, "Invalid Username or Password\nPlease try again");
+					}else if(rdbtnDoctor.isSelected() == true){
+						MDGui.user = temp;
+						setVisible(false);
+						MDGui.intializeDoctor();
+					}else{
+						MDGui.user = temp;
+						setVisible(false);
+						MDGui.intializePatient();
 					}
 				} catch (AddressException e1) {
 					// TODO Auto-generated catch block
