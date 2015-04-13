@@ -51,19 +51,19 @@ public class RegisterPatient extends JPanel implements ActionListener {
 		add( txtFName);
 	    
 		lblLName = new JLabel("Last Name: ");
-		lblLName.setBounds(271,100,65,25);
+		lblLName.setBounds(271,100,74,25);
 		add(lblLName);
 		
 		txtLName = new JTextField(25);
-		txtLName.setBounds(333, 100, 150, 25);
+		txtLName.setBounds(344, 99, 150, 25);
 		add(txtLName);
 	    
 		lblMName = new JLabel("Middle Initial: ");
-		lblMName.setBounds(493,100,150,25);
+		lblMName.setBounds(506,100,100,25);
 		add(lblMName);
 		
 		txtMName = new JTextField(2);
-		txtMName.setBounds(564, 100, 25, 25);
+		txtMName.setBounds(606, 99, 25, 25);
 		add(txtMName);
 		
 		lblGender = new JLabel("Gender: ");
@@ -88,56 +88,56 @@ public class RegisterPatient extends JPanel implements ActionListener {
 		add(txtDOB);
 		
 		lblWeight = new JLabel("Weight (lbs): ");
-		lblWeight.setBounds(26, 200, 75, 25);
+		lblWeight.setBounds(26, 200, 86, 25);
 		add(lblWeight);
 		
 		txtWeight = new JTextField();
-		txtWeight.setBounds(99, 200, 25, 25);
+		txtWeight.setBounds(111, 199, 57, 25);
 		add(txtWeight);
 		
 		lblHeight = new JLabel("Height (ft): ");
-		lblHeight.setBounds(134, 200, 60, 25);
+		lblHeight.setBounds(180, 200, 81, 25);
 		add(lblHeight);
 
 		comboFoot = new JComboBox(heightFoot);
-		comboFoot.setBounds(194, 200, 50, 25);
+		comboFoot.setBounds(271, 201, 50, 25);
 		add(comboFoot);
 		
 		comboInches = new JComboBox(heightInches);
-		comboInches.setBounds(245, 200, 75, 25);
+		comboInches.setBounds(333, 201, 75, 25);
 		add(comboInches);
 		
 		lblUserID = new JLabel("ID: (6 Digits): ");
-		lblUserID.setBounds(26, 250, 150, 25);
+		lblUserID.setBounds(26, 251, 88, 25);
 		add(lblUserID);
 		
 		txtUser = new JTextField();
-		txtUser.setBounds(99, 250, 75, 25);
+		txtUser.setBounds(111, 250, 75, 25);
 		add(txtUser);
         
 		
 		lblPassword = new JLabel("Password: (> 8 Characters): ");
-		lblPassword.setBounds(186, 250, 150, 25);
+		lblPassword.setBounds(198, 251, 187, 25);
 		add(lblPassword);
 		
 		txtPass = new JTextField();
-		txtPass.setBounds(333, 250, 75, 25);
+		txtPass.setBounds(397, 250, 75, 25);
 		add(txtPass);
 		
 		lblEmail = new JLabel("Email: ");
-		lblEmail.setBounds(26, 286, 31, 25);
+		lblEmail.setBounds(26, 288, 42, 25);
 		add(lblEmail);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(67, 286, 200, 25);
+		txtEmail.setBounds(71, 287, 200, 25);
 		add(txtEmail);
 		
 		lblPhone = new JLabel("Phone: ");
-		lblPhone.setBounds(286, 286, 50, 25);
+		lblPhone.setBounds(335, 288, 50, 25);
 		add(lblPhone);
 		
 		txtPhone = new JTextField();
-		txtPhone.setBounds(343, 286, 200, 25);
+		txtPhone.setBounds(378, 288, 200, 25);
 		add(txtPhone);
 		
 		lblAllergy = new JLabel("Known Allergies seperated by Commas");

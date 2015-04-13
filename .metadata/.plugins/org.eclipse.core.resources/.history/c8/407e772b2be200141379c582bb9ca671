@@ -148,15 +148,9 @@ public class Login_Panel extends JPanel {
 		btnEnter.setBounds(300, 115, 134, 29);
 		add(btnEnter);
 		
-		JLabel lblNewPatientRegister = new JLabel("New patient? Register here");
-		lblNewPatientRegister.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-		});
-		lblNewPatientRegister.setBounds(135, 174, 173, 16);
-		add(lblNewPatientRegister);
+		JList list = new JList();
+		list.setBounds(120, 194, 112, 50);
+		add(list);
 
 	}
 }

@@ -5,6 +5,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Users/Adam/Documents/CSE360-Project"/>
 			<item value="/Users/Adam/Documents/CSE360-Project/Test"/>
 			<item value="/Users/Adam/Documents/CSE360-Project/JavaMD"/>
 		</list>
