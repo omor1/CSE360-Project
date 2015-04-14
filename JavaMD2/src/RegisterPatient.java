@@ -36,6 +36,7 @@ public class RegisterPatient extends JPanel implements ActionListener {
     protected String gender,weight,height,feet,inches, DOB, FName,LName,MName,phone,password,id,email,allergies;
     String[] heightFoot = {"Feet","4","5","6","7"};
     String[] heightInches = {"Inches","0","1","2","3","4","5","6","7","8","9","10","11"};
+    private JButton btnHomepage;
 	/**
 	 * Create the panel.
 	 */
@@ -156,7 +157,7 @@ public class RegisterPatient extends JPanel implements ActionListener {
 		add(txtAllergies);
 		
 		btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(420,312, 100, 50);
+		btnSubmit.setBounds(420,315, 100, 50);
 		add(btnSubmit);
 		
 		btnNew = new JButton("Reset");
@@ -169,6 +170,16 @@ public class RegisterPatient extends JPanel implements ActionListener {
 		add(txtOutput);
 	    btnSubmit.addActionListener(this);
 	    btnNew.addActionListener(this);
+	    
+	    btnHomepage = new JButton("Back");
+	    btnHomepage.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		setVisible(false);
+	    		MDGui.initializeLogin();
+	    	}
+	    });
+	    btnHomepage.setBounds(530, 376, 102, 47);
+	    add(btnHomepage);
 	  }
 	  public void actionPerformed(ActionEvent event) {
 		    Object source = event.getSource();
