@@ -130,7 +130,7 @@ public class ResetPassword_Panel extends JPanel{
 			Person temp = MDGui.db.searchEmail(email);
 			if(temp != null)
 			{				
-				temp.setPassword("12345");
+				temp.setPassword(sNewPassword);
 				MDGui.db.updatePerson(temp);
 			}
 			else

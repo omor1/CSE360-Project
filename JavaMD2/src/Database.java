@@ -313,10 +313,10 @@ public class Database {
 			Statement st2 = conn.createStatement();
 			ResultSet rs2 = st2.executeQuery(str2);
 			if(rs2.next()){
-				int id = rs.getInt("ID");
-				String name = rs.getString("NAME");				
-				int threshold = rs.getInt("Threshold");
-				String pw = rs.getString("PASSWORD");
+				int id = rs2.getInt("ID");
+				String name = rs2.getString("NAME");				
+				int threshold = rs2.getInt("Threshold");
+				String pw = rs2.getString("PASSWORD");
 				InternetAddress e = null;
 				try {
 					e = new InternetAddress(email);
