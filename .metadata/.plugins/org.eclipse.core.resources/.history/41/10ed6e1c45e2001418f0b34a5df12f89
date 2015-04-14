@@ -149,7 +149,6 @@ public class Login_Panel extends JPanel {
 		add(btnEnter);
 		
 		JLabel lblNewPatientRegister = new JLabel("New patient? Register here");
-		lblNewPatientRegister.setForeground(Color.blue);
 		lblNewPatientRegister.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
