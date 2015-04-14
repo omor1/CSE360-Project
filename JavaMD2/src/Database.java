@@ -225,10 +225,10 @@ public class Database {
 	public void updatePerson(Person user) throws SQLException{
 		String updateString;
 		
-		if(user instanceof Patient){
+		if(user instanceof Patient){			
 			this.tableName = "Patients";
 			updateString = "UPDATE " + this.dbName + " . "
-					+ this.tableName + "SET `NAME`='" + user.getName() + "', `PASSWORD`='" + user.getPassword() + "' WHERE `ID`='"
+					+ this.tableName + " SET `NAME`='" + user.getName() + "', `PASSWORD`='" + user.getPassword() + "' WHERE `ID`='"
 					+ user.getId() + "';";
 		}else{
 			this.tableName = "Doctors";
@@ -244,7 +244,7 @@ public class Database {
 		this.executeUpdate(conn, updateString);
 	}
 	/*
-	 * Retrieves Passward and other data
+	 * Retrieves Password and other data
 	 */
 	
 	public Person retrievePerson(String newTableName, String username, String password) throws SQLException, AddressException {
@@ -255,13 +255,6 @@ public class Database {
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(retrieveString);
 		if (rs.next()) {
-			/* Getting error:
-			 * java.lang.IllegalArgumentException: Invalid UUID string: 1
-			 */
-
-			//UUID id = UUID.fromString(rs.getString("ID"));
-			
-			// Possible data fields
 			int id;
 			String name;
 			InternetAddress email;
@@ -303,8 +296,9 @@ public class Database {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			Person temp = new Person(name, id, e, pw);
-			return temp;
+			//this is where the problem is -DS
+			Person r = new Patient(name, id, e, pw);
+			return r;
 		}else{
 				
 			System.out.println("Not in Patients table");
@@ -324,8 +318,8 @@ public class Database {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				Person temp = new Doctor(name, id, e, pw, threshold);
-				return temp;
+				Person t = new Doctor(name, id, e, pw, threshold);
+				return t;
 			}else{
 				return null;
 			}

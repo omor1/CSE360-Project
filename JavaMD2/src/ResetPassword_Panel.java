@@ -127,11 +127,11 @@ public class ResetPassword_Panel extends JPanel{
 		final SecureRandom random = new SecureRandom();
 		sNewPassword = new BigInteger(60,random).toString(32);		
 		try{
-			Person temp = MDGui.db.searchEmail(email);
-			if(temp != null)
+			Person t = MDGui.db.searchEmail(email);
+			if(t != null)
 			{				
-				temp.setPassword(sNewPassword);
-				MDGui.db.updatePerson(temp);
+				t.setPassword(sNewPassword);
+				MDGui.db.updatePerson(t);
 			}
 			else
 			{
