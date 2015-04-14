@@ -1,5 +1,3 @@
-
-
 import javax.mail.internet.InternetAddress;
 
 public class Doctor extends Person {
@@ -12,10 +10,10 @@ public class Doctor extends Person {
 	}
 
 	public Doctor(String name, int id, InternetAddress email, String password,
-			int threshold2) {
+			int threshold) {
 		// TODO Auto-generated constructor stub
 		super(name,id,email,password);
-		this.threshold = threshold2;
+		this.setThreshold(threshold);
 	}
 
 	public int getThreshold() {

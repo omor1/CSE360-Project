@@ -1,5 +1,3 @@
-import java.util.UUID;
-
 import javax.mail.internet.InternetAddress;
 
 public class Person {
