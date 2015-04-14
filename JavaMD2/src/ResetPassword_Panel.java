@@ -55,6 +55,16 @@ public class ResetPassword_Panel extends JPanel{
 		});
 		btnReset.setBounds(6, 143, 200, 29);
 		add(btnReset);
+		
+		        JButton btnBack = new JButton("Back");
+        	btnBack.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                MDGui.intializePatient();
+            }
+        });
+		 btnBack.setBounds(6, 173, 200, 29);
+		 add(btnBack);
 	}
 	
 	private boolean PatientExists(String Email){
