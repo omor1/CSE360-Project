@@ -104,7 +104,7 @@ public class Form {
 
 	public void setDiagnosis(String diagnosis) {
 		this.doctor = MDGui.user.getName();
-		setStatus("Completed");
+		this.status = "Completed";
 		this.diagnosis = diagnosis;
 	}
 	

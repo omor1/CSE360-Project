@@ -59,7 +59,7 @@ public class Doctor_Panel extends JPanel {
 	                MDGui.initializeLogin();
 	            }
 	        });
-	        btnLogout.setBounds(6, 125, 150, 29);
+	        btnLogout.setBounds(6, 215, 150, 29);
 	        add(btnLogout);
 	}
 

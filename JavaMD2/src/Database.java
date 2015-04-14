@@ -138,9 +138,10 @@ public class Database {
 	public void updateForm(Form f1) throws SQLException{
 		this.tableName = "Forms";
 		String updateString = "UPDATE " + this.dbName + " . "
-				+ this.tableName + "SET `Doctor`='" + f1.getDoctor() + "', `Diagnose`='"+ f1.getDiagnosis() 
+				+ this.tableName + " SET `Doctor`='" + f1.getDoctor() + "', `Diagnose`='"+ f1.getDiagnosis() 
 				+ "', `Status`='" + f1.getStatus()
 				+ "' WHERE `idForms`='" + f1.getId() + "';";
+		System.out.println(updateString);
 		this.executeUpdate(conn, updateString);
 	}
 	
