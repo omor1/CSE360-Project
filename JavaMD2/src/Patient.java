@@ -49,23 +49,20 @@ public class Patient extends Person {
 	}
 
 	private Gender gender;
-	private final LocalDate birthDate;
-	private double height;
-	private double weight;
-	private final MedicalInformation medicalInformation;
-	private final List<Form> forms;
+	//private final LocalDate birthDate;
+	//private double height;
+	//private double weight;
+	//private final MedicalInformation medicalInformation;
+	//private final List<Form> forms;
 
-	public Patient(String name, int id, InternetAddress email, Gender gender,
-			LocalDate birthDate, double height, double weight,
-			MedicalInformation medicalInformation, List<Form> forms,
-			String password) {
+	public Patient(String name, int id, InternetAddress email, String password) {
 		super(name, id, email, password);
 		this.setGender(gender);
-		this.birthDate = birthDate;
-		this.setWeight(weight);
-		this.setHeight(height);
-		this.medicalInformation = medicalInformation;
-		this.forms = forms;
+		//this.birthDate = birthDate;
+		//this.setWeight(weight);
+		//this.setHeight(height);
+		//this.medicalInformation = medicalInformation;
+		//this.forms = forms;
 	}
 	
 	//public Patient(String name, int id, InternetAddress email, )
