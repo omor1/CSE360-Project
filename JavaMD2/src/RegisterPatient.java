@@ -171,7 +171,8 @@ public class PatientRegister extends JPanel implements ActionListener {
 		       allergies = txtAllergies.getText();
 		       password = txtPass.getText();
 		       
-		       //For the output Text Area
+		       //For the output Text Area for testing purposes
+		       /*
 		       txtOutput.setText(FName + ' ' + MName + LName);
 		       txtOutput.append('\n' + height);
 		       txtOutput.append('\n' + DOB);
@@ -180,6 +181,7 @@ public class PatientRegister extends JPanel implements ActionListener {
 		       txtOutput.append('\n' + phone);
 		       txtOutput.append('\n' + password);
 		       txtOutput.append('\n' + email);
+		       */
 		       
 		    }
 		    else if (source == btnNew) {
