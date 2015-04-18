@@ -7,9 +7,9 @@ import javax.mail.internet.InternetAddress;
 
 public class Patient extends Person {
 
-	public enum Gender {
-		MALE, FEMALE, OTHER
-	}
+//	public enum Gender {
+//		MALE, FEMALE, OTHER
+//	}
 
 //	public class MedicalInformation {
 //
@@ -48,7 +48,7 @@ public class Patient extends Person {
 //		}
 //	}
 
-	private Gender gender;
+//	private Gender gender;
 	//private final LocalDate birthDate;
 	//private double height;
 	//private double weight;
@@ -57,7 +57,7 @@ public class Patient extends Person {
 
 	public Patient(String name, int id, InternetAddress email, String password) {
 		super(name, id, email, password);
-		this.setGender(gender);
+//		this.setGender(gender);
 		//this.birthDate = birthDate;
 		//this.setWeight(weight);
 		//this.setHeight(height);
@@ -67,14 +67,14 @@ public class Patient extends Person {
 	
 	//public Patient(String name, int id, InternetAddress email, )
 
-	public Gender getGender() {
-		return gender;
-	}
-
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
-
+//	public Gender getGender() {
+//		return gender;
+//	}
+//
+//	public void setGender(Gender gender) {
+//		this.gender = gender;
+//	}
+//
 //	public LocalDate getBirthDate() {
 //		return birthDate;
 //	}
