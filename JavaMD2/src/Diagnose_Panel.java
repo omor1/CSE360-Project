@@ -40,15 +40,15 @@ public class Diagnose_Panel extends JPanel {
 		btnSubmit.setBounds(281, 250, 117, 29);
 		add(btnSubmit);
 		
-		JButton btnHomepage = new JButton("Homepage");
-		btnHomepage.addActionListener(new ActionListener() {
+                JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				MDGui.intializePatient();
+				MDGui.intializeDoctor();
 			}
 		});
-		btnHomepage.setBounds(281, 210, 117, 29);
-		add(btnHomepage);
+		btnBack.setBounds(281, 210, 117, 29);
+		add(btnBack);
 
 	}
 
