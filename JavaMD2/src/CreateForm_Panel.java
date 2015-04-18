@@ -125,7 +125,7 @@ public class CreateForm_Panel extends JPanel {
 				sum += Integer.parseInt(comboBox3.getSelectedItem().toString());
 				sum += Integer.parseInt(comboBox4.getSelectedItem().toString());
 				sum += Integer.parseInt(comboBox5.getSelectedItem().toString());				
-				int fsum = sum/5; 
+				int fsum = sum; 
 				return fsum;
 			}
 			private boolean filledOut(){
