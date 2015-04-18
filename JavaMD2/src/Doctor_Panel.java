@@ -48,6 +48,16 @@ public class Doctor_Panel extends JPanel {
 		});
 		btnNewButton.setBounds(6, 185, 129, 29);
 		add(btnNewButton);
+		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				MDGui.initializeLogin();
+			}
+		});
+		btnLogout.setBounds(6, 246, 129, 29);
+		add(btnLogout);
 
 	}
 
